@@ -2,14 +2,13 @@ import React, { useRef } from 'react';
 import { usePresentation } from '../../context/PresentationContext';
 import { SlideNavbar } from './SlideNavbar';
 import { NavigationControls } from './NavigationControls';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 interface PresentationLayoutProps {
   children: React.ReactNode;
 }
 
 export const PresentationLayout: React.FC<PresentationLayoutProps> = ({ children }) => {
-  const { currentSlide, direction, nextSlide, prevSlide } = usePresentation();
+  const { currentSlide, nextSlide, prevSlide } = usePresentation();
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
 
@@ -34,37 +33,6 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({ children
 
     touchStartX.current = null;
     touchStartY.current = null;
-  };
-
-  // Smooth Cinematic Slide Transition Variants
-  const slideVariants: Variants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? 36 : -36,
-      opacity: 0,
-      scale: 0.99,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      transition: {
-        x: { duration: 0.38, ease: [0.25, 1, 0.5, 1] },
-        opacity: { duration: 0.32, ease: 'easeOut' },
-        scale: { duration: 0.38, ease: [0.25, 1, 0.5, 1] },
-      },
-    },
-    exit: (dir: number) => ({
-      zIndex: 0,
-      x: dir > 0 ? -36 : 36,
-      opacity: 0,
-      scale: 0.99,
-      transition: {
-        x: { duration: 0.22, ease: [0.25, 1, 0.5, 1] },
-        opacity: { duration: 0.18, ease: 'easeIn' },
-        scale: { duration: 0.22 },
-      },
-    }),
   };
 
   return (
@@ -93,20 +61,8 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({ children
             : 'overflow-y-auto pt-16 sm:pt-20 pb-20 sm:pb-24'
         }`}
       >
-        <div className="w-full max-w-7xl mx-auto my-auto py-1 sm:py-2">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={currentSlide}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              className="w-full flex flex-col items-center justify-center"
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+        <div className="w-full max-w-7xl mx-auto my-auto py-1 sm:py-2 flex flex-col items-center justify-center">
+          {children}
         </div>
       </main>
 
@@ -115,3 +71,4 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({ children
     </div>
   );
 };
+
