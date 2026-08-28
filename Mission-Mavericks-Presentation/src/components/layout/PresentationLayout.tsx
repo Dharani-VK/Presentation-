@@ -36,12 +36,12 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({ children
     touchStartY.current = null;
   };
 
-  // Cinematic Slide Transition Variants
+  // Smooth Cinematic Slide Transition Variants
   const slideVariants: Variants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 80 : -80,
+      x: dir > 0 ? 36 : -36,
       opacity: 0,
-      scale: 0.98,
+      scale: 0.99,
     }),
     center: {
       zIndex: 1,
@@ -49,20 +49,20 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({ children
       opacity: 1,
       scale: 1,
       transition: {
-        x: { type: 'spring' as const, stiffness: 260, damping: 28 },
-        opacity: { duration: 0.35 },
-        scale: { duration: 0.35 },
+        x: { duration: 0.38, ease: [0.25, 1, 0.5, 1] },
+        opacity: { duration: 0.32, ease: 'easeOut' },
+        scale: { duration: 0.38, ease: [0.25, 1, 0.5, 1] },
       },
     },
     exit: (dir: number) => ({
       zIndex: 0,
-      x: dir > 0 ? -80 : 80,
+      x: dir > 0 ? -36 : 36,
       opacity: 0,
-      scale: 0.98,
+      scale: 0.99,
       transition: {
-        x: { type: 'spring' as const, stiffness: 260, damping: 28 },
-        opacity: { duration: 0.25 },
-        scale: { duration: 0.25 },
+        x: { duration: 0.22, ease: [0.25, 1, 0.5, 1] },
+        opacity: { duration: 0.18, ease: 'easeIn' },
+        scale: { duration: 0.22 },
       },
     }),
   };
