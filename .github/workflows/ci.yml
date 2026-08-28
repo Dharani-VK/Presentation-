@@ -33,12 +33,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
-          cache-dependency-path: 'Mission-Mavericks-Presentation/package-lock.json'
 
       - name: Install Dependencies
         working-directory: ./Mission-Mavericks-Presentation
-        run: npm ci
+        run: npm install
 
       - name: Typecheck and Build
         working-directory: ./Mission-Mavericks-Presentation
