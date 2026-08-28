@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd Mission-Mavericks-Presentation && npm install && npm run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "Mission-Mavericks-Presentation/dist",
   "framework": "vite",
   "rewrites": [
@@ -9,3 +9,4 @@
     }
   ]
 }
+
