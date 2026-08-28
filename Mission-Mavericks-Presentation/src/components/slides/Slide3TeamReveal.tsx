@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Layers } from 'lucide-react';
 import { TEAM_MEMBERS } from '../../data/team';
-import missionMavericksLogo from '../../assets/mission-mavericks-logo.png';
+import missionMavericksLogo from '../../Assets/mission-mavericks-logo.png';
 
 // ─── Fallback Avatar ───────────────────────────────────────────────────────────
 const FallbackAvatar: React.FC<{ name: string }> = ({ name }) => {

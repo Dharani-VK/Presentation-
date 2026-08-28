@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { usePresentation } from '../../context/PresentationContext';
-import revealFirstPageVideo from '../../assets/Reveal first page.mp4';
+import revealFirstPageVideo from '../../Assets/Reveal first page.mp4';
 
 export const Slide1Landing: React.FC = () => {
   const { nextSlide } = usePresentation();

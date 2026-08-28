@@ -93,7 +93,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   },
 ];
 
-import missionMavericksLogoImg from '../assets/mission-mavericks-logo.png';
+import missionMavericksLogoImg from '../Assets/mission-mavericks-logo.png';
 
 export const MISSION_MAVERICKS_LOGO = missionMavericksLogoImg;
 
