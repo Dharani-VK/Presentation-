@@ -1,0 +1,9 @@
+{
+  "name": "mission-mavericks-presentation-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix Mission-Mavericks-Presentation run dev",
+    "build": "npm --prefix Mission-Mavericks-Presentation run build",
+    "preview": "npm --prefix Mission-Mavericks-Presentation run preview"
+  }
+}
