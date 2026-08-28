@@ -1,0 +1,20 @@
+<svg viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="emblemMGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c4aae" />
+      <stop offset="30%" stop-color="#0d5bc6" />
+      <stop offset="65%" stop-color="#0b8474" />
+      <stop offset="100%" stop-color="#0ba360" />
+    </linearGradient>
+    <linearGradient id="emblemShieldBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a44a4" />
+      <stop offset="100%" stop-color="#083888" />
+    </linearGradient>
+  </defs>
+  <!-- 1. TOP GREEN 5-POINT STAR -->
+  <polygon points="200,24 213,64 255,64 221,89 234,129 200,104 166,129 179,89 145,64 187,64" fill="#0ba360" />
+  <!-- 2. OUTER SHIELD BLUE CONTOUR -->
+  <path d="M 200 452 C 110 395, 60 290, 60 142 C 125 130, 168 108, 185 95 L 178 112 C 135 125, 90 148, 90 282 C 90 358, 145 398, 200 422 C 255 398, 310 358, 310 282 C 310 148, 265 125, 222 112 L 215 95 C 232 108, 275 130, 340 142 C 340 290, 290 395, 200 452 Z" fill="url(#emblemShieldBlue)" />
+  <!-- 3. CENTRAL STYLIZED 'M' WITH BLUE-TO-GREEN GRADIENT -->
+  <path d="M 102 165 L 155 272 L 200 348 L 245 272 L 298 165 L 298 385 L 262 385 L 262 238 L 216 322 L 184 322 L 138 238 L 138 385 L 102 385 Z" fill="url(#emblemMGradient)" />
+</svg>

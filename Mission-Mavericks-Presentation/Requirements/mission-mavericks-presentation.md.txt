@@ -1,0 +1,845 @@
+# Mission Mavericks × ClaimShield+ Presentation
+
+## 1. PROJECT OVERVIEW
+
+This project is a website-based presentation replacing a traditional PowerPoint deck.
+
+The website must behave like a presentation/keynote experience rather than a conventional scrolling website.
+
+The presentation contains exactly 9 slides.
+
+Only one slide should be visible at a time.
+
+The experience should feel:
+
+- Cinematic
+- Colorful
+- Flashy
+- Modern
+- Interactive
+- Presentation-driven
+- High-energy
+- Premium
+- Professional
+
+The goal is to present the Mission Mavericks team's ClaimShield+ solution as a polished product/innovation showcase.
+
+---
+
+# 2. DESIGN SYSTEM
+
+## Brand
+
+Use the existing:
+
+- Mission Mavericks branding
+- ClaimShield+ branding
+- Supplied logos
+- Supplied images
+- Supplied team photographs
+- Supplied video/assets
+
+Do not replace supplied branding assets.
+
+## Visual Theme
+
+Use:
+
+- Dark backgrounds
+- Minimal white
+- Neon gradients
+- Electric blue
+- Cyan
+- Green
+- Purple
+- Orange
+- Pink accent glows
+
+Visual techniques:
+
+- Glassmorphism
+- Aurora effects
+- Animated gradients
+- Glow borders
+- Dynamic highlights
+- Floating visual elements
+- Cinematic reveals
+- Subtle particles where lightweight
+- Depth
+- Layered lighting
+- Premium transitions
+
+## Inspiration
+
+The visual quality should be inspired by:
+
+- Apple Keynote
+- Apple product launches
+- Stripe presentations
+- Linear
+- Arc Browser
+- Modern SaaS launch pages
+
+The result should feel like a premium enterprise innovation/product presentation.
+
+## Avoid
+
+Do NOT make the website look like:
+
+- Crypto website
+- Gaming website
+- Metaverse website
+- NFT website
+- Cyberpunk game interface
+
+The design must remain professional and suitable for an enterprise/MNC presentation.
+
+---
+
+# 3. PRESENTATION ARCHITECTURE
+
+Create exactly 9 slides:
+
+1. Landing Page
+2. The Reality
+3. Mission Mavericks Reveal
+4. From Learning To Solution
+5. ClaimShield+ Reveal
+6. ClaimShield+ Ecosystem
+7. Launch Applications
+8. Evidence Hub
+9. Roadmap
+
+Only one slide should be visible at a time.
+
+Do not create a traditional continuous-scrolling presentation.
+
+Slide transitions should feel like advancing through a keynote presentation.
+
+---
+
+# 4. GLOBAL NAVIGATION
+
+Every slide must have:
+
+- Previous button
+- Next button
+- Progress indicator
+- Eye icon
+- Keyboard navigation
+- Touch/swipe navigation
+
+## Previous
+
+Position:
+
+Fixed bottom-left.
+
+## Next
+
+Position:
+
+Fixed bottom-right.
+
+## Progress
+
+Position:
+
+Top center.
+
+Format:
+
+Slide X / 9
+
+Example:
+
+Slide 3 / 9
+
+## Keyboard
+
+Support:
+
+- ArrowRight → Next slide
+- ArrowLeft → Previous slide
+- Space → Next slide
+- PageDown → Next slide
+- PageUp → Previous slide
+
+## Touch
+
+Support horizontal swipe:
+
+- Swipe left → Next
+- Swipe right → Previous
+
+---
+
+# 5. EYE / PRESENTATION MODE
+
+This feature is mandatory.
+
+Every slide must contain a fixed Eye icon in the top-right corner.
+
+Default state:
+
+Navigation is visible.
+
+When the Eye icon is clicked:
+
+Hide:
+
+- Main Navbar
+- Progress indicator
+- Previous button
+- Next button
+
+The Eye icon itself must remain visible.
+
+When clicked again:
+
+Show all navigation.
+
+Use:
+
+- Eye icon when navigation is visible
+- EyeOff icon when navigation is hidden
+
+Animation duration:
+
+300–500ms.
+
+The state must persist while navigating between slides.
+
+Example:
+
+User hides navigation on Slide 2.
+
+User moves to Slide 3.
+
+Navigation remains hidden.
+
+User clicks Eye icon.
+
+Navigation becomes visible again.
+
+Use centralized React state or React Context.
+
+Do not duplicate Eye Mode state across slides.
+
+---
+
+# 6. SLIDE 1 — LANDING PAGE
+
+Use the existing Home section content from the reference HTML.
+
+Preserve the existing:
+
+- Hero title
+- Opening video section
+- Introduction/story content
+
+The content must not be unnecessarily rewritten.
+
+## Hero
+
+Create:
+
+- Huge headline
+- Cinematic typography
+- Animated reveal
+- Premium background
+- Mission Mavericks / ClaimShield+ branding
+
+## Video
+
+Replace any placeholder video area with a professional large video container.
+
+The container should include:
+
+- Play
+- Pause
+- Fullscreen
+
+Use a glass/neon frame.
+
+The video source must be configurable.
+
+## CTA
+
+Only one primary action:
+
+NEXT →
+
+The CTA advances to Slide 2.
+
+Make the entrance dramatic but professional.
+
+---
+
+# 7. SLIDE 2 — THE REALITY
+
+Use the existing "The Reality" content from the reference HTML.
+
+Preserve the existing business meaning and terminology.
+
+Include:
+
+- Customer
+- Repairer
+- Claims Handler
+- Insurance business pressure
+- Can we make this journey better?
+
+## Design
+
+Represent the stakeholders as animated cards.
+
+Cards should reveal sequentially when the slide enters.
+
+Use:
+
+- Glow
+- Depth
+- Hover effects
+- Subtle tilt
+- Layering
+
+Visually communicate:
+
+- Friction
+- Complexity
+- Multiple stakeholders
+- Insurance pressure
+
+Use lightweight animated pathways or connecting visual elements between stakeholders.
+
+---
+
+# 8. SLIDE 3 — MISSION MAVERICKS REVEAL
+
+Create an epic team reveal.
+
+There are:
+
+11 team members.
+
+Do NOT show all members simultaneously.
+
+Use a Team Reveal Carousel.
+
+## Center Card
+
+Show one large central member card.
+
+Each card contains:
+
+- Photo
+- Name
+- Role
+- Contribution
+
+## Navigation
+
+Inside the carousel:
+
+- Previous Member
+- Next Member
+
+When changing members:
+
+- Current card exits
+- Next card enters
+- Use cinematic transition
+- Use spotlight/glow
+- Use subtle particle/energy burst if lightweight
+
+The experience should feel similar to an awards ceremony/team reveal.
+
+Only one primary member should be in focus at a time.
+
+Team information must be stored in:
+
+src/data/team.ts
+
+---
+
+# 9. SLIDE 4 — FROM LEARNING TO SOLUTION
+
+Use the existing "Our Journey" content.
+
+Transform it into a horizontal timeline.
+
+Timeline:
+
+WEEK 01 → WEEK 02 → WEEK 03 → WEEK 04
+
+Each week is an interactive milestone.
+
+## WEEK 01 — UNDERSTAND
+
+- Insurance
+- Motor
+- Claims
+- Stakeholders
+- Pain Points
+
+## WEEK 02 — DESIGN
+
+- Current State
+- Future State
+- Journeys
+- Opportunities
+
+## WEEK 03 — BUILD
+
+- UI/UX
+- Workflow
+- AI
+- Automation
+- Prototype
+
+## WEEK 04 — DELIVER
+
+- Refine
+- Validate
+- Document
+- QA
+- Showcase
+
+## Interaction
+
+Clicking a week should open:
+
+- Full-screen modal OR
+- Large floating glass card
+
+The selected week should animate from the timeline into focus.
+
+Timeline content must be stored in:
+
+src/data/timeline.ts
+
+---
+
+# 10. SLIDE 5 — CLAIMSHIELD+ REVEAL
+
+This is the strongest visual reveal in the presentation.
+
+Treat this as the equivalent of a premium product launch moment.
+
+## Sequence
+
+1. Existing problem/reality fades away
+2. Visual energy begins gathering
+3. Particles/glow converge
+4. ClaimShield+ logo forms
+5. Product title appears
+6. Tagline appears
+7. CTA appears
+
+Use:
+
+- Dark background
+- Aurora gradients
+- Cinematic lighting
+- Neon glow
+- Layered depth
+- Premium typography
+- Smooth timing
+
+The reveal should feel inspired by a premium Apple-style product launch.
+
+Do not make it cheesy or gaming-like.
+
+---
+
+# 11. SLIDE 6 — CLAIMSHIELD+ ECOSYSTEM
+
+Preserve the existing ClaimShield+ ecosystem content.
+
+Display three large interactive journey cards:
+
+1. Customer Journey
+2. Repairer Journey
+3. Claims Handler Journey
+
+Each card should include:
+
+- Icon
+- Title
+- Short description
+- Visual hierarchy
+- Hover animation
+- Depth
+- Glow
+
+## Interaction
+
+When a card is selected:
+
+Expand the card.
+
+Show its journey flow/details.
+
+Only the selected journey should become the visual focus.
+
+---
+
+# 12. SLIDE 7 — LAUNCH APPLICATIONS
+
+Replace the existing single launch button with three launch actions.
+
+Create:
+
+- Launch Customer
+- Launch Repairer
+- Launch Claims Handler
+
+Each button must accept a configurable external URL.
+
+URLs must be stored in:
+
+src/data/links.ts
+
+When clicked:
+
+Open the target website in a new browser tab.
+
+## FAST TRACK
+
+The:
+
+~30 Minutes
+
+element must be the visual hero of this slide.
+
+Make it:
+
+- Large
+- Glowing
+- Pulsing
+- Animated
+- Visually dominant
+
+It should immediately communicate the speed/value proposition.
+
+---
+
+# 13. SLIDE 8 — EVIDENCE HUB
+
+Preserve all existing evidence categories.
+
+Display:
+
+- FRD
+- FRS
+- Process & Journeys
+- UI/UX
+- Videos
+- Gallery
+
+Use premium button/card layouts.
+
+Every category should support a configurable URL.
+
+URLs must be stored in:
+
+src/data/links.ts
+
+## Behavior
+
+Documents:
+
+Open in a new browser tab.
+
+Videos:
+
+Open inside an embedded modal player.
+
+Gallery:
+
+Open an image viewer/lightbox.
+
+Use premium hover and interaction animations.
+
+---
+
+# 14. SLIDE 9 — ROADMAP
+
+Use the existing roadmap content from the reference HTML.
+
+Replace existing static tiles with an interactive milestone timeline.
+
+Milestones:
+
+NOW → NEXT → FUTURE
+
+Display them on a connected roadmap line.
+
+## NOW
+
+- Motor OD ecosystem
+- Three journeys
+- Fast-track
+- AI + Automation
+
+## NEXT
+
+- Integrations
+- Analytics
+- Expanded straight-through processing
+
+## FUTURE
+
+- Predictive claims
+- Advanced AI
+- Intelligent automation
+
+## Interaction
+
+Clicking a milestone opens a large popup/glass card.
+
+Display the milestone's detailed content.
+
+Roadmap data must be stored in:
+
+src/data/roadmap.ts
+
+Use glowing roadmap effects and premium transitions.
+
+---
+
+# 15. MOTION DESIGN
+
+Use Framer Motion as the primary animation system.
+
+The presentation should use:
+
+- Cinematic slide transitions
+- Staggered reveals
+- Scroll-triggered style reveals where applicable to slide entry
+- Hover interactions
+- Depth
+- Parallax-style background movement
+- Modal transitions
+- Carousel transitions
+- Spotlight effects
+- Glow animations
+- Sequential storytelling
+
+Important:
+
+This is a presentation, not a traditional website.
+
+Animations should support storytelling.
+
+Do not animate everything simultaneously.
+
+Avoid excessive motion.
+
+Maintain professional enterprise quality.
+
+Respect prefers-reduced-motion.
+
+---
+
+# 16. RESPONSIVE DESIGN
+
+The presentation must work on:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Ensure:
+
+- No horizontal overflow
+- No clipped content
+- No broken cards
+- No unusable navigation
+- Modals remain usable
+- Team carousel remains usable
+- Timeline remains usable
+
+---
+
+# 17. DATA ARCHITECTURE
+
+Create:
+
+src/data/team.ts
+src/data/timeline.ts
+src/data/roadmap.ts
+src/data/links.ts
+
+Business users should be able to update:
+
+- Team members
+- Roles
+- Contributions
+- Timeline content
+- Roadmap content
+- Application URLs
+- Evidence URLs
+- Video URLs
+- Gallery URLs
+
+without modifying UI components.
+
+---
+
+# 18. COMPONENT ARCHITECTURE
+
+Use reusable components.
+
+Expected components include:
+
+- PresentationLayout
+- SlideContainer
+- NavigationControls
+- ProgressIndicator
+- EyeModeToggle
+- TeamCarousel
+- TimelineModal
+- RoadmapTimeline
+- EvidenceHub
+- LaunchButtons
+
+Additional small reusable components may be created when genuinely useful.
+
+Do not over-engineer.
+
+Do not create unnecessary abstraction.
+
+---
+
+# 19. PERFORMANCE
+
+Keep the application lightweight.
+
+Prefer:
+
+- CSS
+- Tailwind
+- Framer Motion
+- React
+
+Avoid:
+
+- Three.js
+- WebGL
+- Heavy particle engines
+- Large unnecessary dependencies
+- Continuous expensive animations
+
+Use optimized animations.
+
+---
+
+# 20. TECHNICAL REQUIREMENTS
+
+Use:
+
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+
+Optional:
+
+- GSAP only if genuinely necessary
+
+Do NOT use:
+
+- Next.js
+- Firebase
+- Supabase
+- MongoDB
+- Express
+- Backend APIs
+- Authentication
+- Database
+- CMS
+- Three.js
+- React Three Fiber
+
+---
+
+# 21. HOSTING
+
+The application must be deployable as a static website.
+
+Supported:
+
+- Vercel
+- Netlify
+
+Build command:
+
+npm run build
+
+Build output:
+
+dist
+
+No backend required.
+
+No environment variables required.
+
+---
+
+# 22. REFERENCE CONTENT
+
+The existing file:
+
+reference/index.html
+
+is the source of truth for existing business content.
+
+It is READ-ONLY.
+
+Do not modify it.
+
+Preserve its approved content when rebuilding the presentation.
+
+The new React application is the final product.
+
+---
+
+# 23. FINAL QUALITY BAR
+
+The final result should feel like:
+
+A premium corporate innovation/product keynote.
+
+It should not feel like:
+
+- A basic React website
+- A PowerPoint exported to HTML
+- A generic dashboard
+- A template
+- A crypto landing page
+- A gaming interface
+
+The experience should tell a story:
+
+REALITY
+↓
+MISSION MAVERICKS
+↓
+LEARNING
+↓
+CLAIMSHIELD+
+↓
+ECOSYSTEM
+↓
+LAUNCH
+↓
+EVIDENCE
+↓
+ROADMAP
+
+The audience should feel that they are moving through a product launch presentation rather than browsing a normal website.

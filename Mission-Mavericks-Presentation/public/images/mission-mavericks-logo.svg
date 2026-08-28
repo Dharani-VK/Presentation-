@@ -1,0 +1,23 @@
+<svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e5bc6" />
+      <stop offset="35%" stop-color="#1a62d6" />
+      <stop offset="70%" stop-color="#15a386" />
+      <stop offset="100%" stop-color="#20df89" />
+    </linearGradient>
+    <linearGradient id="shieldBorder" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="60%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#1e40af" />
+    </linearGradient>
+    <radialGradient id="shieldBackdrop" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0b244d" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#040e21" stop-opacity="0.95" />
+    </radialGradient>
+  </defs>
+  <path d="M 100 228 C 50 200, 25 145, 25 65 C 55 58, 80 46, 88 40 L 100 40 L 112 40 C 120 46, 145 58, 175 65 C 175 145, 150 200, 100 228 Z" fill="url(#shieldBackdrop)" />
+  <path d="M 100 230 C 48 200, 24 145, 24 62 C 56 56, 82 44, 90 38 L 86 48 C 62 55, 38 68, 38 140 C 38 185, 68 208, 100 216 C 132 208, 162 185, 162 140 C 162 68, 138 55, 114 48 L 110 38 C 118 44, 144 56, 176 62 C 176 145, 152 200, 100 230 Z" fill="url(#shieldBorder)" stroke="#3b82f6" stroke-width="1" />
+  <path d="M 46 72 L 78 135 L 100 178 L 122 135 L 154 72 L 154 195 L 132 195 L 132 118 L 108 162 L 92 162 L 68 118 L 68 195 L 46 195 Z" fill="url(#mGradient)" stroke="#1e40af" stroke-width="0.5" />
+  <polygon points="100,12 105,27 121,27 108,37 113,52 100,42 87,52 92,37 79,27 95,27" fill="#20df89" />
+</svg>

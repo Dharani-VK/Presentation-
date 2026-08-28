@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mission Mavericks | Final Showcase</title>
+<style>
+:root{--navy:#06152f;--blue:#1767ff;--cyan:#00d9ff;--green:#20df89;--lime:#b9ff62;--red:#ff4058;--orange:#ff8a3d;--purple:#8b5cf6;--white:#fff;--muted:#aab7ca}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:#020713;color:#fff}
+a{text-decoration:none;color:inherit}button{font:inherit;cursor:pointer}.top{position:fixed;top:0;left:0;right:0;height:68px;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;background:#06152fe8;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff14}
+.brand{font-weight:950;letter-spacing:-.04em;font-size:20px}.brand span{color:var(--green)}.menu{display:flex;gap:5px}.menu button{background:transparent;border:0;color:#c7d2e1;padding:10px 13px;border-radius:10px;font-weight:700}.menu button:hover,.menu button.active{background:#ffffff0d;color:#fff}
+.view{min-height:100vh;padding:105px 7vw 80px;display:none;position:relative;overflow:hidden}.view.active{display:block;animation:page .55s cubic-bezier(.2,.8,.2,1)}@keyframes page{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+.view:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:70px 70px;opacity:.018}
+.dark{background:radial-gradient(circle at 80% 15%,#1767ff32,transparent 28%),radial-gradient(circle at 15% 85%,#8b5cf620,transparent 30%),linear-gradient(135deg,#020713,#071a37)}
+.problem{background:radial-gradient(circle at 80% 20%,#ff40582d,transparent 28%),radial-gradient(circle at 15% 85%,#ff8a3d18,transparent 30%),linear-gradient(135deg,#120509,#241016)}
+.product{background:radial-gradient(circle at 50% 35%,#20df8925,transparent 34%),radial-gradient(circle at 85% 10%,#00d9ff18,transparent 28%),linear-gradient(135deg,#02100f,#05252b)}
+.light{color:var(--navy);background:linear-gradient(135deg,#fff,#f0f6fb)}.future{background:radial-gradient(circle at 50% 30%,#8b5cf62c,transparent 34%),linear-gradient(135deg,#050817,#111033)}
+.wrap{max-width:1180px;margin:auto;position:relative;z-index:2}.center{text-align:center}.k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:900;color:var(--green);margin-bottom:15px}.problem .k{color:var(--orange)}.light .k{color:var(--blue)}.future .k{color:#b99cff}
+h1,h2{margin:0;font-weight:950;letter-spacing:-.055em;line-height:.98}.hero{font-size:clamp(52px,7vw,100px)}.title{font-size:clamp(42px,5.8vw,76px)}
+.gradient{background:linear-gradient(100deg,#fff,#a3c9ff 50%,#20df89);-webkit-background-clip:text;background-clip:text;color:transparent}.light .gradient{background:linear-gradient(100deg,#071a37,#1767ff 55%,#13a960);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(17px,1.8vw,23px);line-height:1.55;color:var(--muted);max-width:900px;margin:20px 0}.light .sub{color:#667386}.center .sub{margin-left:auto;margin-right:auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border:0;border-radius:999px;background:linear-gradient(100deg,var(--green),var(--cyan));color:#03140d;font-weight:950;box-shadow:0 0 30px #20df8948}.btn:hover{transform:translateY(-3px)}.btn.secondary{background:#ffffff0c;color:#fff;border:1px solid #ffffff20;box-shadow:none}.light .btn.secondary{color:var(--navy);background:#fff;border-color:#ccd9e7}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.four{grid-template-columns:repeat(4,1fr)}
+.card{padding:24px;border:1px solid #ffffff18;border-radius:22px;background:#ffffff0a;backdrop-filter:blur(16px);transition:.3s}.light .card{background:#fff;border-color:#dce6ef;box-shadow:0 15px 40px #12334a10}.card:hover{transform:translateY(-6px);border-color:#20df8955}.card h3{margin:0 0 8px}.card p{color:#b7c3d3;line-height:1.5}.light .card p{color:#667386}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:35px}.tile{min-height:190px;padding:28px;border-radius:26px;border:1px solid #ffffff18;background:#ffffff0b;display:flex;flex-direction:column;justify-content:flex-end;transition:.35s}.tile:hover{transform:translateY(-8px) scale(1.01);border-color:#20df8960;box-shadow:0 20px 50px #0003}.tile .icon{font-size:36px;margin-bottom:auto}.tile h3{font-size:24px;margin:0 0 7px}.tile p{margin:0;color:#aebacd;line-height:1.45}.light .tile{background:#fff;color:var(--navy);border-color:#dce6ef;box-shadow:0 15px 40px #12334a10}.light .tile p{color:#667386}
+.flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;margin:30px 0}.node{padding:17px 15px;border-radius:16px;background:#fff;color:var(--navy);font-weight:900;border:2px solid var(--blue);text-align:center}.node.g{border-color:var(--green)}.arrow{font-size:24px;color:#91a0b3}
+.metric{font-size:clamp(85px,12vw,155px);font-weight:950;letter-spacing:-.09em;background:linear-gradient(110deg,var(--green),var(--cyan),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent;animation:pulse 2.2s ease-in-out infinite alternate;filter:drop-shadow(0 0 20px #20df8950)}@keyframes pulse{to{transform:scale(1.035);filter:drop-shadow(0 0 35px #20df8975)}}
+.pills{margin-top:20px}.pill{display:inline-block;padding:9px 14px;margin:4px;border-radius:99px;background:#20df8910;border:1px solid #20df8940;color:var(--green);font-weight:800}
+.team{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:28px}.person{min-height:120px;background:#fff;color:var(--navy);border-radius:18px;display:flex;align-items:center;justify-content:center;flex-direction:column;border:1px solid #dce6ef}.person small{color:#778396;margin-top:6px}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}.week{padding:24px;border-radius:20px;background:#fff;color:var(--navy);border-top:5px solid var(--blue)}.week:nth-child(2){border-color:var(--green)}.week:nth-child(3){border-color:var(--orange)}.week:nth-child(4){border-color:var(--purple)}
+.viewer{padding:35px;border-radius:24px;background:#ffffff0a;border:1px solid #ffffff18;text-align:center}.light .viewer{background:#fff;border-color:#dce6ef}
+.notice{padding:18px 20px;border-left:4px solid var(--green);background:#20df890c;margin-top:25px;color:#c1cedd}.light .notice{color:#596779}
+.footer{padding:30px;text-align:center;color:#8794a8;border-top:1px solid #ffffff12}
+@media(max-width:900px){.menu{display:none}.grid,.four,.tiles,.timeline{grid-template-columns:1fr 1fr}.team{grid-template-columns:repeat(3,1fr)}.view{padding-left:5vw;padding-right:5vw}}
+@media(max-width:600px){.grid,.four,.tiles,.timeline,.team{grid-template-columns:1fr 1fr}.hero{font-size:48px}.title{font-size:42px}}
+</style>
+</head>
+<body>
+<header class="top"><button class="brand" style="background:none;border:0;color:white" onclick="go('home')">MISSION <span>MAVERICKS</span></button>
+<nav class="menu" id="menu">
+<button data-page="home">Home</button><button data-page="team">Mission Mavericks</button><button data-page="journey">Our Journey</button><button data-page="product">ClaimShield+</button><button data-page="ai">AI & Automation</button><button data-page="fast">Fast-Track</button><button data-page="evidence">Evidence Hub</button><button data-page="roadmap">Roadmap</button>
+</nav></header>
+
+<main>
+<section id="home" class="view active problem center"><div class="wrap">
+<div class="k">Final Showcase • The Story Begins</div>
+<h1 class="hero">Every claim<br><span style="color:var(--orange)">has a story.</span></h1>
+<p class="sub">A 30–45 second opening video goes here. <b>Do not reveal Mission Mavericks or ClaimShield+ yet.</b></p>
+<div class="viewer"><div style="font-size:48px">▶</div><h3>OPENING VIDEO PLACEHOLDER</h3><p>Replace with the final accident / customer / repairer / claims-handler video.</p><button class="btn secondary">Play Opening Video</button></div>
+<div style="margin-top:25px"><button class="btn" onclick="go('problem')">Continue the story →</button></div>
+</div></section>
+
+<section id="problem" class="view problem"><div class="wrap">
+<div class="k">The Reality</div><h2 class="title">One claim.<br><span style="color:var(--orange)">Many frictions.</span></h2>
+<div class="tiles">
+<div class="tile"><div class="icon">👤</div><h3>Customer</h3><p>Confusion • claim intimation • documents • waiting • status uncertainty</p></div>
+<div class="tile"><div class="icon">🔧</div><h3>Repairer</h3><p>Survey • approval • confirmation • follow-up • settlement visibility</p></div>
+<div class="tile"><div class="icon">👨‍💼</div><h3>Claims Handler</h3><p>Manual data entry • documents • validation • repetitive processing</p></div>
+</div>
+<div class="card" style="margin-top:20px"><h3>Insurance business pressure</h3><p>Growing claims handling effort • TAT/SLA expectations • market demand for speed • simpler processes • faster decisions.</p></div>
+<div class="center" style="margin-top:28px"><h2 style="font-size:34px">Can we make this journey better?</h2><button class="btn" style="margin-top:18px" onclick="go('team')">Discover who took on the challenge →</button></div>
+</div></section>
+
+<section id="team" class="view dark"><div class="wrap">
+<div class="k">The First Reveal</div><h2 class="title">Meet the<br><span class="gradient">Mission Mavericks.</span></h2>
+<p class="sub">11 people. Different strengths. One purpose.</p>
+<div class="team"><div class="person"><b>COACH</b><small>Leadership</small></div><div class="person"><b>MENTOR</b><small>Guidance</small></div><div class="person"><b>MEMBER 01</b><small>Domain</small></div><div class="person"><b>MEMBER 02</b><small>Process</small></div><div class="person"><b>MEMBER 03</b><small>Technology</small></div><div class="person"><b>MEMBER 04</b><small>AI</small></div><div class="person"><b>MEMBER 05</b><small>UI/UX</small></div><div class="person"><b>MEMBER 06</b><small>QA</small></div><div class="person"><b>MEMBER 07</b><small>Business</small></div><div class="person"><b>MEMBER 08</b><small>Analysis</small></div><div class="person"><b>MEMBER 09</b><small>Delivery</small></div></div>
+<div class="pills"><span class="pill">ONE TEAM</span><span class="pill">ONE VISION</span><span class="pill">ONE VOICE</span><span class="pill">ONE VICTORY</span></div>
+<div style="margin-top:28px"><button class="btn" onclick="go('journey')">Explore our four-week journey →</button></div>
+</div></section>
+
+<section id="journey" class="view light"><div class="wrap">
+<div class="k">Our Four Weeks</div><h2 class="title">From learning<br>to solution.</h2>
+<div class="timeline"><div class="week"><b>WEEK 01</b><h3>UNDERSTAND</h3><p>Insurance • Motor • Claims • stakeholders • pain points</p></div><div class="week"><b>WEEK 02</b><h3>DESIGN</h3><p>Current state • future state • journeys • opportunities</p></div><div class="week"><b>WEEK 03</b><h3>BUILD</h3><p>UI/UX • workflow • AI • automation • prototype</p></div><div class="week"><b>WEEK 04</b><h3>DELIVER</h3><p>Refine • validate • document • QA • showcase</p></div></div>
+<div class="grid"><div class="card"><h3>📚 Domain Learning</h3><p>Indian General Insurance • Motor products • OD/TP • claims lifecycle • IRDAI • IIB • market dynamics • opportunity areas.</p></div><div class="card"><h3>📋 PMO Discipline</h3><p>Governance • requirements • process • FRD/FRS • UI/UX • architecture • QA • documentation • reviews.</p></div><div class="card"><h3>📸 Evidence</h3><p>Photos, workshops, milestones and artefacts from the four-week program.</p></div></div>
+<div class="center" style="margin-top:30px"><button class="btn" onclick="go('reveal')">See what we created →</button></div>
+</div></section>
+
+<section id="reveal" class="view dark center"><div class="wrap">
+<div class="k">The Second Reveal</div><h2 class="title">We understood the problem.<br>We learned the business.<br>We redesigned the journey.</h2><p class="sub">So… what did we create?</p><div class="logo" style="font-size:72px;font-weight:950">CLAIM<span style="color:var(--green)">SHIELD+</span></div><p class="sub">Intelligent Motor OD Claims Management</p><button class="btn" onclick="go('product')">Explore ClaimShield+ →</button>
+</div></section>
+
+<section id="product" class="view product"><div class="wrap">
+<div class="k">The Product</div><h2 class="title">ClaimShield+<br><span class="gradient">connected claims.</span></h2>
+<p class="sub">Three journeys. One ecosystem. AI and automation where they remove friction.</p>
+<div class="tiles">
+<div class="tile" onclick="go('customer')"><div class="icon">👤</div><h3>Customer Journey</h3><p>Raise • Track • Voice • Fast-Track • Settlement →</p></div>
+<div class="tile" onclick="go('repairer')"><div class="icon">🔧</div><h3>Repairer Journey</h3><p>Intimate • Upload • Track • Invoice • Settlement →</p></div>
+<div class="tile" onclick="go('handler')"><div class="icon">👨‍💼</div><h3>Claims Handler</h3><p>Allocate • Validate • Assess • Decide • Settle →</p></div>
+</div>
+<div class="center" style="margin-top:25px"><button class="btn" onclick="go('fast')">⭐ Explore ~30-minute Fast-Track</button></div>
+</div></section>
+
+<section id="customer" class="view light"><div class="wrap"><div class="k">Customer Journey</div><h2 class="title">A simpler journey,<br><span class="gradient">when it can be.</span></h2>
+<div class="flow"><div class="node">FNOL</div><span class="arrow">→</span><div class="node">Validate</div><span class="arrow">→</span><div class="node">Assess</div><span class="arrow">→</span><div class="node">Track</div><span class="arrow">→</span><div class="node g">Settlement</div></div>
+<div class="grid"><div class="card"><h3>Fast-Track</h3><p>Eligible minor scratches, minor dents and windshield/glass claims.</p></div><div class="card"><h3>Voice Assistant</h3><p>Voice-assisted interaction and claim-status access.</p></div><div class="card"><h3>Visibility</h3><p>Claim status and journey information in one place.</p></div></div>
+<div style="margin-top:25px"><button class="btn" onclick="go('fast')">Explore Fast-Track →</button> <button class="btn secondary" onclick="go('product')">Back to ClaimShield+</button></div></div></section>
+
+<section id="repairer" class="view light"><div class="wrap"><div class="k">Repairer Journey</div><h2 class="title">Less chasing.<br><span class="gradient">More visibility.</span></h2>
+<div class="flow"><div class="node g">Intimate</div><span class="arrow">→</span><div class="node">Upload</div><span class="arrow">→</span><div class="node">Survey</div><span class="arrow">→</span><div class="node">Approval</div><span class="arrow">→</span><div class="node">Invoice</div><span class="arrow">→</span><div class="node g">Settlement</div></div>
+<div class="pills"><span class="pill">Documents</span><span class="pill">Survey Status</span><span class="pill">Final Inspection Photos</span><span class="pill">Liability Sheet</span><span class="pill">Settlement Tracking</span></div>
+<div style="margin-top:25px"><button class="btn secondary" onclick="go('product')">← Back to ClaimShield+</button></div></div></section>
+
+<section id="handler" class="view light"><div class="wrap"><div class="k">Claims Handler Journey</div><h2 class="title">Less repetitive work.<br>Better decision support.</h2>
+<div class="grid four"><div class="card"><h3>Auto Allocation</h3><p>Master mapping + rules</p></div><div class="card"><h3>OCR</h3><p>Document extraction</p></div><div class="card"><h3>Survey</h3><p>Virtual / physical</p></div><div class="card"><h3>AI Assessment</h3><p>Damage assessment support</p></div><div class="card"><h3>Fraud Scoring</h3><p>Early risk signal</p></div><div class="card"><h3>Risk Validation</h3><p>Early validation</p></div><div class="card"><h3>Decision Support</h3><p>Human review + action</p></div><div class="card"><h3>Settlement</h3><p>Repair → invoice → inspection</p></div></div>
+<div style="margin-top:25px"><button class="btn secondary" onclick="go('product')">← Back to ClaimShield+</button></div></div></section>
+
+<section id="ai" class="view dark"><div class="wrap"><div class="k">Intelligence Layer</div><h2 class="title">Where can intelligence<br><span class="gradient">remove friction?</span></h2>
+<div class="tiles"><div class="tile"><div class="icon">🎙️</div><h3>Voice</h3><p>Simpler customer interaction.</p></div><div class="tile"><div class="icon">📄</div><h3>OCR</h3><p>Document intelligence.</p></div><div class="tile"><div class="icon">🤖</div><h3>AI Assessment</h3><p>Damage assessment support.</p></div><div class="tile"><div class="icon">🛡️</div><h3>Fraud Scoring</h3><p>Early fraud signal.</p></div><div class="tile"><div class="icon">⚠️</div><h3>Risk Validation</h3><p>Early validation.</p></div><div class="tile"><div class="icon">⚙️</div><h3>Automation</h3><p>Allocation + workflow execution.</p></div></div>
+<div class="notice">AI augments claims expertise — it does not replace human judgement.</div></div></section>
+
+<section id="fast" class="view product center"><div class="wrap"><div class="k">Hero Feature</div><div class="metric">~30</div><div style="font-size:20px;font-weight:950;letter-spacing:.15em">MINUTES • FNOL → PAYMENT</div><p class="sub">End-to-end automated fast-track journey for eligible minor claims.</p><span class="pill">Minor Scratch</span><span class="pill">Minor Dent</span><span class="pill">Windshield / Glass</span>
+<div class="flow"><div class="node g">FNOL</div><span class="arrow">→</span><div class="node g">Auto Validate</div><span class="arrow">→</span><div class="node g">AI / Rule Assess</div><span class="arrow">→</span><div class="node g">Eligibility</div><span class="arrow">→</span><div class="node g">Spot Settlement</div><span class="arrow">→</span><div class="node g">Payment</div></div>
+<button class="btn" onclick="launchApp()">🚀 Launch ClaimShield+ Live Application</button>
+<div class="notice" style="text-align:left;max-width:800px;margin:25px auto">Replace the demo URL in the code with the actual deployed ClaimShield+ application URL. Keep a recorded backup demo for the event.</div></div></section>
+
+<section id="evidence" class="view light"><div class="wrap"><div class="k">Evidence Hub</div><h2 class="title">The work lives<br><span class="gradient">beyond the showcase.</span></h2>
+<div class="tiles"><div class="tile" onclick="openFile('FRD')"><div class="icon">📄</div><h3>FRD</h3><p>Open project document →</p></div><div class="tile" onclick="openFile('FRS')"><div class="icon">📑</div><h3>FRS</h3><p>Open project document →</p></div><div class="tile" onclick="openFile('Process Flows')"><div class="icon">🔀</div><h3>Process & Journeys</h3><p>View process artefacts →</p></div><div class="tile" onclick="openFile('UI/UX')"><div class="icon">🎨</div><h3>UI / UX</h3><p>View designs →</p></div><div class="tile" onclick="openFile('Videos')"><div class="icon">🎬</div><h3>Videos</h3><p>Play project videos →</p></div><div class="tile" onclick="openFile('Gallery')"><div class="icon">📸</div><h3>Gallery</h3><p>View photographs →</p></div></div>
+<div class="notice">Connect each tile to the real PDF, video or image-gallery location. PDFs should open in a browser viewer; videos should play inside the site.</div></div></section>
+
+<section id="roadmap" class="view future"><div class="wrap"><div class="k">Roadmap</div><h2 class="title">From reactive claims<br>to <span class="gradient">intelligent claims.</span></h2><div class="grid"><div class="card"><h3>NOW</h3><p>Motor OD ecosystem • three journeys • fast-track • AI + automation</p></div><div class="card"><h3>NEXT</h3><p>Integrations • analytics • expanded straight-through processing</p></div><div class="card"><h3>FUTURE</h3><p>Predictive claims • advanced AI • intelligent automation</p></div></div>
+<div class="center" style="margin-top:45px"><h2 style="font-size:38px">Four weeks ago, we started with a problem.</h2><p class="sub">Today, we leave with a possibility.</p><div class="logo" style="font-size:55px">MISSION <span style="color:var(--green)">MAVERICKS</span></div><div style="margin-top:10px;font-weight:900">ONE TEAM • ONE VISION • ONE VOICE • ONE VICTORY</div><div class="logo" style="font-size:45px;margin-top:22px">CLAIM<span style="color:var(--green)">SHIELD+</span></div><div>FASTER. SMARTER. SIMPLER.</div></div></div></section>
+</main>
+<script>
+const pages=[...document.querySelectorAll('.view')],buttons=[...document.querySelectorAll('.menu button')];
+function go(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));buttons.forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo(0,0)}
+buttons.forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+function launchApp(){alert('DEVELOPER ACTION: Replace launchApp() with the real deployed ClaimShield+ URL.');}
+function openFile(name){alert('EVIDENCE HUB PLACEHOLDER: Connect “'+name+'” to the actual PDF/video/gallery resource.');}
+</script>
+</body></html>
