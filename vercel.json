@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd Mission-Mavericks-Presentation && npm install && npm run build",
+  "outputDirectory": "Mission-Mavericks-Presentation/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

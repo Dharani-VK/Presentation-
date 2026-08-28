@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "npm --prefix Mission-Mavericks-Presentation run dev",
-    "build": "npm --prefix Mission-Mavericks-Presentation run build",
+    "build": "npm --prefix Mission-Mavericks-Presentation install && npm --prefix Mission-Mavericks-Presentation run build",
     "preview": "npm --prefix Mission-Mavericks-Presentation run preview"
   }
 }
