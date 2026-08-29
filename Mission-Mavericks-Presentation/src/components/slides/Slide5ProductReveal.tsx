@@ -75,6 +75,7 @@ export const Slide5ProductReveal: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={textRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
+          style={{ visibility: textRevealed ? 'visible' : 'hidden' }}
           className="w-full text-center mb-5 sm:mb-6"
         >
           <h2 className="w-full text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-extrabold font-display tracking-tight whitespace-nowrap flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-10 text-white">
@@ -93,6 +94,7 @@ export const Slide5ProductReveal: React.FC = () => {
               : { opacity: 0, scale: 0.88, y: 25 }
           }
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          style={{ visibility: textRevealed ? 'visible' : 'hidden' }}
           className="flex flex-col items-center text-center"
         >
           {/* Shield Emblem Image */}
