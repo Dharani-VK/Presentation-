@@ -8,7 +8,7 @@ interface ModalProps {
   title?: string;
   subtitle?: string;
   kicker?: string;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | '5xl';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
   children: React.ReactNode;
 }
 

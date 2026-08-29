@@ -1,220 +1,330 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { GlassCard } from '../common/GlassCard';
-import { Modal } from '../common/Modal';
-import { VideoPlayer } from '../common/VideoPlayer';
-import { EVIDENCE_ITEMS, SHOWCASE_VIDEOS, GALLERY_PHOTOS } from '../../data/links';
-import { EvidenceItem } from '../../types';
-import { FileText, FileCode2, GitFork, Palette, Film, Images, ExternalLink, Play, FolderArchive, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  TrendingUp,
+  Target,
+  Briefcase,
+  Zap,
+  DollarSign,
+  Percent,
+  Sparkles,
+  Network,
+  GitMerge,
+  Activity,
+  ShieldCheck,
+  Layers,
+  CalendarCheck,
+  FileCheck2,
+  ShieldAlert,
+  Gauge,
+  BarChart3,
+} from 'lucide-react';
 
 export const Slide8EvidenceHub: React.FC = () => {
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(SHOWCASE_VIDEOS[0]);
-  const [galleryModalOpen, setGalleryModalOpen] = useState(false);
-  const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+  const businessBenefits = [
+    { id: 'b1', title: 'Improved TAT & SLA', icon: Zap },
+    { id: 'b2', title: 'Higher Team Productivity', icon: TrendingUp },
+    { id: 'b3', title: 'Reduced Claims Handling Cost', icon: DollarSign },
+    { id: 'b4', title: 'Lower Operational Cost', icon: Percent },
+    { id: 'b5', title: 'Better Customer Experience', icon: Sparkles },
+    { id: 'b6', title: 'Accelerated Time-to-Value', icon: Gauge },
+  ];
 
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case 'FRD': return <FileText className="w-6 h-6 text-brand-blue" />;
-      case 'FRS': return <FileCode2 className="w-6 h-6 text-brand-cyan" />;
-      case 'Process': return <GitFork className="w-6 h-6 text-brand-green" />;
-      case 'UI/UX': return <Palette className="w-6 h-6 text-brand-purple" />;
-      case 'Videos': return <Film className="w-6 h-6 text-brand-orange" />;
-      case 'Gallery': return <Images className="w-6 h-6 text-brand-pink" />;
-      default: return <FolderArchive className="w-6 h-6 text-white" />;
-    }
-  };
+  const businessOutcomes = [
+    { id: 'o1', title: 'Seamless Stakeholder Connectivity', icon: Network },
+    { id: 'o2', title: 'Better Process Control', icon: GitMerge },
+    { id: 'o3', title: 'Real-time Visibility & Insights', icon: Activity },
+    { id: 'o4', title: 'Improved Quality & Compliance', icon: ShieldCheck },
+    { id: 'o5', title: 'Data-Driven Decision Making', icon: BarChart3 },
+    { id: 'o6', title: 'Scalable & Future-Ready Platform', icon: Layers },
+  ];
 
-  const handleItemClick = (item: EvidenceItem) => {
-    if (item.type === 'modal-video') {
-      setVideoModalOpen(true);
-    } else if (item.type === 'gallery') {
-      setGalleryModalOpen(true);
-    } else {
-      window.open(item.url, '_blank', 'noopener,noreferrer');
-    }
-  };
+  const pmoItems = [
+    { id: 'p1', title: 'Project Planning & Tracking', icon: Briefcase },
+    { id: 'p2', title: 'Phased Milestone & Sprint Planning', icon: CalendarCheck },
+    { id: 'p3', title: 'Scope & Requirement Management', icon: FileCheck2 },
+    { id: 'p4', title: 'Documentation & Standards', icon: Layers },
+    { id: 'p5', title: 'Risk, Quality & Stage-Gate Governance', icon: ShieldAlert },
+    { id: 'p6', title: 'KPI Tracking & Value Realization', icon: Gauge },
+  ];
+
+  // Base constants from user palette
+  const BG_NAVY = '#07152E';
+  const TEXT_SLATE = '#94A3B8';
+
+  // Card 1 Extended Palette (Mint & Emerald)
+  const C1_PRIMARY = '#36E5B0';
+  const C1_SECONDARY = '#10B981';
+
+  // Card 2 Extended Palette (Cyan & Royal Blue)
+  const C2_PRIMARY = '#00D9FF';
+  const C2_SECONDARY = '#3B82F6';
+
+  // Card 3 Extended Palette (Neon Violet & Indigo)
+  const C3_PRIMARY = '#8B5CF6';
+  const C3_SECONDARY = '#6366F1';
 
   return (
-    <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
-      {/* Title */}
-      <motion.h2
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-center"
-      >
-        The work lives{' '}
-        <span className="bg-gradient-to-r from-brand-green via-brand-cyan to-brand-blue bg-clip-text text-transparent">
-          beyond the showcase.
-        </span>
-      </motion.h2>
+    <div className="w-full max-w-[1480px] mx-auto h-[calc(100vh-8.2rem)] flex flex-col justify-between py-1 px-2 sm:px-4 select-none relative overflow-hidden">
 
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15 }}
-        className="text-sm sm:text-base text-brand-muted mt-2 text-center max-w-2xl"
-      >
-        Comprehensive project documentation, architecture blueprints, video walkthroughs, and photo archives.
-      </motion.p>
+      {/* ── Background ── */}
+      <div className="absolute inset-0 bg-aurora-mesh opacity-30 pointer-events-none -z-20" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[220px] bg-gradient-to-b from-[#00D9FF]/10 to-transparent rounded-full blur-[80px] pointer-events-none -z-10" />
 
-      {/* 6 Category Evidence Grid */}
+      {/* ── Slide Header ── */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.25 }}
-        className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8"
+        transition={{ duration: 0.4 }}
+        className="text-center mb-2 shrink-0"
       >
-        {EVIDENCE_ITEMS.map((item) => (
-          <motion.div
-            key={item.id}
-            whileHover={{ y: -6, scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => handleItemClick(item)}
-            className="cursor-pointer"
-          >
-            <GlassCard className="h-full flex flex-col justify-between p-5 sm:p-6 group hover:border-brand-green/50">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
-                    {getCategoryIcon(item.category)}
-                  </div>
-                  {item.badge && (
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/5 text-white/70 border border-white/10">
-                      {item.badge}
-                    </span>
-                  )}
-                </div>
-
-                <h3 className="text-lg font-bold font-display text-white group-hover:text-brand-green transition-colors mb-1.5">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-brand-muted leading-relaxed mb-4">
-                  {item.description}
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-bold text-brand-green group-hover:underline">
-                <span>{item.actionLabel}</span>
-                {item.type === 'modal-video' || item.type === 'gallery' ? (
-                  <Play className="w-3.5 h-3.5 fill-current" />
-                ) : (
-                  <ExternalLink className="w-3.5 h-3.5" />
-                )}
-              </div>
-            </GlassCard>
-          </motion.div>
-        ))}
+        <div
+          className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full border text-[10px] font-mono font-bold uppercase tracking-widest mb-1 shadow-lg"
+          style={{ background: BG_NAVY, borderColor: 'rgba(148,163,184,0.3)', color: TEXT_SLATE }}
+        >
+          <BarChart3 className="w-3 h-3" style={{ color: C1_PRIMARY }} />
+          <span>ENTERPRISE VALUE ARCHITECTURE</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-black font-display tracking-tight text-white uppercase leading-tight">
+          BUSINESS IMPACT{' '}
+          <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(to right, ${C2_PRIMARY}, ${C3_PRIMARY})` }}>
+            & PMO
+          </span>
+        </h2>
+        <p className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase font-display max-w-2xl mx-auto mt-0.5" style={{ color: TEXT_SLATE }}>
+          Delivering quantifiable operational benefits, connected stakeholder outcomes, and disciplined stage-gate PMO governance.
+        </p>
       </motion.div>
 
-      {/* Video Modal Player */}
-      <Modal
-        isOpen={videoModalOpen}
-        onClose={() => setVideoModalOpen(false)}
-        kicker="EVIDENCE HUB • VIDEO PLAYLIST"
-        title={selectedVideo.title}
-        subtitle={selectedVideo.description}
-        maxWidth="5xl"
-      >
-        <div className="space-y-4">
-          <VideoPlayer
-            src={selectedVideo.url}
-            poster={selectedVideo.thumbnail}
-            title={selectedVideo.title}
-            autoPlay={true}
-            className="w-full aspect-video"
-          />
+      {/* ── Three Cards with Symmetrical Rows & Columns ── */}
+      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-3 xl:gap-4 items-stretch flex-1 min-h-0">
 
-          {/* Playlist selector */}
-          <div className="mt-4">
-            <h4 className="text-xs font-black uppercase tracking-wider text-brand-green mb-2">
-              Available Showcase Clips ({SHOWCASE_VIDEOS.length})
-            </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-              {SHOWCASE_VIDEOS.map((vid) => (
-                <button
-                  key={vid.id}
-                  onClick={() => setSelectedVideo(vid)}
-                  className={`p-2.5 rounded-xl border text-left transition-all ${
-                    selectedVideo.id === vid.id
-                      ? 'bg-brand-green/20 border-brand-green text-white shadow-glow-green/20'
-                      : 'bg-white/5 border-white/10 text-white/80 hover:bg-white/10'
-                  }`}
-                >
-                  <span className="text-[10px] font-mono text-brand-cyan block mb-0.5">{vid.category} • {vid.duration}</span>
-                  <strong className="text-xs font-bold block truncate">{vid.title}</strong>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Modal>
+        {/* ════════════════════════════════════════════════════════
+            CARD 1 — BUSINESS BENEFITS (MINT / EMERALD)
+           ════════════════════════════════════════════════════════ */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          whileHover={{ y: -4 }}
+          className="flex flex-col rounded-2xl overflow-hidden transition-all duration-300 group relative h-full"
+          style={{
+            background: `linear-gradient(160deg, rgba(54, 229, 176, 0.06) 0%, rgba(7, 21, 46, 0.6) 100%)`,
+            backdropFilter: 'blur(24px)',
+            border: `1.5px solid rgba(54, 229, 176, 0.25)`,
+            boxShadow: `0 8px 32px rgba(54, 229, 176, 0.08), inset 0 1px 0 rgba(54, 229, 176, 0.1)`,
+          }}
+        >
+          <div className="absolute top-0 inset-x-0 h-[3px]" style={{ background: `linear-gradient(90deg, ${BG_NAVY}, ${C1_SECONDARY}, ${C1_PRIMARY}, ${C1_SECONDARY}, ${BG_NAVY})` }} />
 
-      {/* Gallery Lightbox Modal */}
-      <Modal
-        isOpen={galleryModalOpen}
-        onClose={() => setGalleryModalOpen(false)}
-        kicker="PROGRAM MILESTONE ARCHIVE"
-        title="4-Week Collaborative Journey Gallery"
-        subtitle="Snapshot moments from domain deep-dives, BPMN modeling, AI builds, and final showcases."
-        maxWidth="5xl"
-      >
-        <div className="space-y-4">
-          {/* Main Focused Photo */}
-          <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-black aspect-video flex items-center justify-center">
-            <img
-              src={GALLERY_PHOTOS[activePhotoIndex].url}
-              alt={GALLERY_PHOTOS[activePhotoIndex].title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-              <span className="text-xs font-black uppercase text-brand-green">
-                {GALLERY_PHOTOS[activePhotoIndex].phase}
-              </span>
-              <h4 className="text-base font-bold text-white">
-                {GALLERY_PHOTOS[activePhotoIndex].title}
-              </h4>
-              <p className="text-xs text-white/80 mt-0.5">
-                {GALLERY_PHOTOS[activePhotoIndex].caption}
-              </p>
-            </div>
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.04 }} xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110%" cy="110%" r="140" stroke={C1_PRIMARY} strokeWidth="1" fill="none" />
+            <circle cx="110%" cy="110%" r="100" stroke={C1_PRIMARY} strokeWidth="1" fill="none" />
+            <circle cx="110%" cy="110%" r="60" stroke={C1_PRIMARY} strokeWidth="1" fill="none" />
+          </svg>
 
-            {/* Prev/Next overlay controls */}
-            <button
-              onClick={() => setActivePhotoIndex((prev) => (prev === 0 ? GALLERY_PHOTOS.length - 1 : prev - 1))}
-              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/20"
-              aria-label="Previous Photo"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => setActivePhotoIndex((prev) => (prev === GALLERY_PHOTOS.length - 1 ? 0 : prev + 1))}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/20"
-              aria-label="Next Photo"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full blur-[50px] pointer-events-none" style={{ background: 'rgba(54, 229, 176, 0.12)' }} />
 
-          {/* Thumbnail Gallery Strip */}
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-            {GALLERY_PHOTOS.map((photo, idx) => (
-              <button
-                key={photo.id}
-                onClick={() => setActivePhotoIndex(idx)}
-                className={`relative rounded-xl overflow-hidden border transition-all aspect-video ${
-                  idx === activePhotoIndex
-                    ? 'border-brand-green ring-2 ring-brand-green/40 scale-105 shadow-glow-green/30'
-                    : 'border-white/10 opacity-60 hover:opacity-100'
-                }`}
+          <div className="relative z-10 flex flex-col h-full p-3 sm:p-4">
+            {/* Header */}
+            <div className="flex items-center gap-2.5 pb-2 mb-2 shrink-0" style={{ borderBottom: '1px solid rgba(54, 229, 176, 0.15)' }}>
+              <div
+                className="p-1.5 rounded-lg shrink-0 group-hover:scale-105 transition-transform"
+                style={{ background: 'rgba(54, 229, 176, 0.1)', border: `1px solid rgba(54, 229, 176, 0.3)`, color: C1_PRIMARY, boxShadow: `0 0 15px rgba(54, 229, 176, 0.2)` }}
               >
-                <img src={photo.url} alt={photo.title} className="w-full h-full object-cover" />
-              </button>
-            ))}
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+              <h3 className="text-base sm:text-lg font-black font-display tracking-tight uppercase" style={{ color: C1_PRIMARY }}>
+                BUSINESS BENEFITS
+              </h3>
+            </div>
+
+            {/* 6 Equal Rows Grid */}
+            <div className="grid grid-rows-6 gap-2 flex-1 min-h-0">
+              {businessBenefits.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.25, delay: 0.15 + idx * 0.04 }}
+                    whileHover={{ x: 4 }}
+                    className="flex items-center gap-3 px-3 py-1.5 rounded-xl transition-all duration-200 cursor-default"
+                    style={{ background: 'rgba(54, 229, 176, 0.03)', border: '1px solid rgba(54, 229, 176, 0.12)' }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'rgba(54, 229, 176, 0.09)';
+                      (e.currentTarget as HTMLElement).style.border = '1px solid rgba(54, 229, 176, 0.35)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'rgba(54, 229, 176, 0.03)';
+                      (e.currentTarget as HTMLElement).style.border = '1px solid rgba(54, 229, 176, 0.12)';
+                    }}
+                  >
+                    <div className="p-1.5 rounded-lg shrink-0" style={{ background: 'rgba(54, 229, 176, 0.1)', border: '1px solid rgba(54, 229, 176, 0.25)', color: C1_SECONDARY }}>
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold font-display leading-tight text-white flex-1">{item.title}</span>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </Modal>
+        </motion.div>
+
+        {/* ════════════════════════════════════════════════════════
+            CARD 2 — BUSINESS OUTCOMES (CYAN / BLUE)
+           ════════════════════════════════════════════════════════ */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.15 }}
+          whileHover={{ y: -4 }}
+          className="flex flex-col rounded-2xl overflow-hidden transition-all duration-300 group relative h-full"
+          style={{
+            background: `linear-gradient(160deg, rgba(0, 217, 255, 0.06) 0%, rgba(7, 21, 46, 0.6) 100%)`,
+            backdropFilter: 'blur(24px)',
+            border: `1.5px solid rgba(0, 217, 255, 0.25)`,
+            boxShadow: `0 8px 32px rgba(0, 217, 255, 0.08), inset 0 1px 0 rgba(0, 217, 255, 0.1)`,
+          }}
+        >
+          <div className="absolute top-0 inset-x-0 h-[3px]" style={{ background: `linear-gradient(90deg, ${BG_NAVY}, ${C2_SECONDARY}, ${C2_PRIMARY}, ${C2_SECONDARY}, ${BG_NAVY})` }} />
+
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.04 }} xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="circuit2" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+                <path d="M10 10 H25 V25 H40" stroke={C2_PRIMARY} strokeWidth="1" fill="none" />
+                <circle cx="10" cy="10" r="2" fill={C2_PRIMARY} />
+                <circle cx="40" cy="25" r="2" fill={C2_PRIMARY} />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#circuit2)" />
+          </svg>
+
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-44 h-24 rounded-full blur-[45px] pointer-events-none" style={{ background: 'rgba(0, 217, 255, 0.15)' }} />
+
+          <div className="relative z-10 flex flex-col h-full p-3 sm:p-4">
+            {/* Header */}
+            <div className="flex items-center gap-2.5 pb-2 mb-2 shrink-0" style={{ borderBottom: '1px solid rgba(0, 217, 255, 0.15)' }}>
+              <div
+                className="p-1.5 rounded-lg shrink-0 group-hover:scale-105 transition-transform"
+                style={{ background: 'rgba(0, 217, 255, 0.1)', border: `1px solid rgba(0, 217, 255, 0.3)`, color: C2_PRIMARY, boxShadow: `0 0 15px rgba(0, 217, 255, 0.2)` }}
+              >
+                <Target className="w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+              <h3 className="text-base sm:text-lg font-black font-display tracking-tight uppercase" style={{ color: C2_PRIMARY }}>
+                BUSINESS OUTCOMES
+              </h3>
+            </div>
+
+            {/* 6 Equal Rows Grid */}
+            <div className="grid grid-rows-6 gap-2 flex-1 min-h-0">
+              {businessOutcomes.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.25, delay: 0.2 + idx * 0.04 }}
+                    whileHover={{ x: 4 }}
+                    className="flex items-center gap-3 px-3 py-1.5 rounded-xl transition-all duration-200 cursor-default"
+                    style={{ background: 'rgba(0, 217, 255, 0.03)', border: '1px solid rgba(0, 217, 255, 0.12)' }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'rgba(0, 217, 255, 0.09)';
+                      (e.currentTarget as HTMLElement).style.border = '1px solid rgba(0, 217, 255, 0.35)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'rgba(0, 217, 255, 0.03)';
+                      (e.currentTarget as HTMLElement).style.border = '1px solid rgba(0, 217, 255, 0.12)';
+                    }}
+                  >
+                    <div className="p-1.5 rounded-lg shrink-0" style={{ background: 'rgba(0, 217, 255, 0.1)', border: '1px solid rgba(0, 217, 255, 0.25)', color: C2_SECONDARY }}>
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold font-display leading-tight text-white flex-1">{item.title}</span>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ════════════════════════════════════════════════════════
+            CARD 3 — PMO (VIOLET / INDIGO)
+           ════════════════════════════════════════════════════════ */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.45, delay: 0.2 }}
+          whileHover={{ y: -4 }}
+          className="flex flex-col rounded-2xl overflow-hidden transition-all duration-300 group relative h-full"
+          style={{
+            background: `linear-gradient(160deg, rgba(139, 92, 246, 0.06) 0%, rgba(7, 21, 46, 0.6) 100%)`,
+            backdropFilter: 'blur(24px)',
+            border: `1.5px solid rgba(139, 92, 246, 0.25)`,
+            boxShadow: `0 8px 32px rgba(139, 92, 246, 0.08), inset 0 1px 0 rgba(139, 92, 246, 0.1)`,
+          }}
+        >
+          <div className="absolute top-0 inset-x-0 h-[3px]" style={{ background: `linear-gradient(90deg, ${BG_NAVY}, ${C3_SECONDARY}, ${C3_PRIMARY}, ${C3_SECONDARY}, ${BG_NAVY})` }} />
+
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.04 }} xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110%" cy="110%" r="140" stroke={C3_PRIMARY} strokeWidth="1" fill="none" />
+            <circle cx="110%" cy="110%" r="100" stroke={C3_PRIMARY} strokeWidth="1" fill="none" />
+            <circle cx="110%" cy="110%" r="60" stroke={C3_PRIMARY} strokeWidth="1" fill="none" />
+          </svg>
+
+          <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full blur-[50px] pointer-events-none" style={{ background: 'rgba(139, 92, 246, 0.15)' }} />
+
+          <div className="relative z-10 flex flex-col h-full p-3 sm:p-4">
+            {/* Header */}
+            <div className="flex items-center gap-2.5 pb-2 mb-2 shrink-0" style={{ borderBottom: '1px solid rgba(139, 92, 246, 0.15)' }}>
+              <div
+                className="p-1.5 rounded-lg shrink-0 group-hover:scale-105 transition-transform"
+                style={{ background: 'rgba(139, 92, 246, 0.1)', border: `1px solid rgba(139, 92, 246, 0.3)`, color: C3_PRIMARY, boxShadow: `0 0 15px rgba(139, 92, 246, 0.2)` }}
+              >
+                <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+              <h3 className="text-base sm:text-lg font-black font-display tracking-tight uppercase" style={{ color: C3_PRIMARY }}>
+                PMO GOVERNANCE
+              </h3>
+            </div>
+
+            {/* 6 Equal Rows Grid */}
+            <div className="grid grid-rows-6 gap-2 flex-1 min-h-0">
+              {pmoItems.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.25, delay: 0.25 + idx * 0.04 }}
+                    whileHover={{ x: 4 }}
+                    className="flex items-center gap-3 px-3 py-1.5 rounded-xl transition-all duration-200 cursor-default"
+                    style={{ background: 'rgba(139, 92, 246, 0.03)', border: '1px solid rgba(139, 92, 246, 0.12)' }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'rgba(139, 92, 246, 0.09)';
+                      (e.currentTarget as HTMLElement).style.border = '1px solid rgba(139, 92, 246, 0.35)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'rgba(139, 92, 246, 0.03)';
+                      (e.currentTarget as HTMLElement).style.border = '1px solid rgba(139, 92, 246, 0.12)';
+                    }}
+                  >
+                    <div className="p-1.5 rounded-lg shrink-0" style={{ background: 'rgba(139, 92, 246, 0.1)', border: '1px solid rgba(139, 92, 246, 0.25)', color: C3_SECONDARY }}>
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold font-display leading-tight text-white flex-1">{item.title}</span>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
+
     </div>
   );
 };
