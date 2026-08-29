@@ -19,8 +19,11 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
     ? ROADMAP_MILESTONES.find((m) => m.id === activeMilestoneId) || null
     : null;
 
+  const windingCenterlinePath =
+    'M 450 600 C 250 500, 390 460, 510 400 C 650 330, 870 310, 810 220 C 765 160, 510 160, 482 120';
+
   return (
-    <div className="relative w-full h-[460px] sm:h-[520px] md:h-[560px] rounded-3xl overflow-hidden bg-[#030914] border border-white/10 shadow-2xl">
+    <div className="relative w-full h-[470px] sm:h-[530px] md:h-[570px] rounded-3xl overflow-hidden bg-[#030914] border border-white/10 shadow-2xl">
       {/* Distant Horizon Atmospheric Glow & Mountains */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Sky gradient */}
@@ -59,6 +62,9 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
         preserveAspectRatio="none"
       >
         <defs>
+          {/* Center Track for Car Animation */}
+          <path id="windingCenterline" d={windingCenterlinePath} fill="none" />
+
           {/* Asphalt Surface Gradient */}
           <linearGradient id="windingAsphalt" x1="0" y1="1" x2="0" y2="0">
             <stop offset="0%" stopColor="#121822" />
@@ -79,6 +85,13 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
             <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
             <stop offset="50%" stopColor="#d1d5db" stopOpacity="0.6" />
             <stop offset="100%" stopColor="#9ca3af" stopOpacity="0.2" />
+          </linearGradient>
+
+          {/* Car Headlight Cone Gradient */}
+          <linearGradient id="headlightWindingBeam" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+            <stop offset="60%" stopColor="#00d9ff" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#00d9ff" stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -122,16 +135,64 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
 
         {/* Center Dashed Line following S-Curve */}
         <path
-          d="M 450 600 
-             C 250 500, 390 460, 510 400 
-             C 650 330, 870 310, 810 220 
-             C 765 160, 510 160, 482 120"
+          d={windingCenterlinePath}
           fill="none"
           stroke="url(#centerDash)"
           strokeWidth="3.5"
           strokeDasharray="18 16"
           className="animate-pulse"
         />
+
+        {/* ── THE ANIMATED RUNNING CAR ON THE WINDING ROAD ── */}
+        <g>
+          <animateMotion
+            dur="9s"
+            repeatCount="indefinite"
+            rotate="auto"
+          >
+            <mpath href="#windingCenterline" />
+          </animateMotion>
+
+          {/* Headlights Light Cone casting forward on road */}
+          <polygon
+            points="0,-3 40,-14 40,14 0,3"
+            fill="url(#headlightWindingBeam)"
+            opacity="0.65"
+            pointerEvents="none"
+          />
+
+          {/* Sleek Running Car */}
+          <g transform="translate(-10, -6)">
+            {/* Underglow Glow */}
+            <ellipse cx="10" cy="6" rx="13" ry="6" fill="#00d9ff" opacity="0.4" className="blur-xs" />
+
+            {/* Car Body */}
+            <rect
+              x="1"
+              y="1"
+              width="18"
+              height="10"
+              rx="3.5"
+              fill="#00d9ff"
+              stroke="#ffffff"
+              strokeWidth="0.6"
+            />
+
+            {/* Windshield */}
+            <path
+              d="M 5 2 L 14 2 Q 16 6, 14 10 L 5 10 Q 3 6, 5 2 Z"
+              fill="#06152f"
+            />
+
+            {/* Twin Headlights */}
+            <circle cx="18.5" cy="2.5" r="1.2" fill="#ffffff" />
+            <circle cx="18.5" cy="9.5" r="1.2" fill="#ffffff" />
+
+            {/* Twin Taillights */}
+            <circle cx="1.5" cy="2.5" r="1" fill="#ff4058" />
+            <circle cx="1.5" cy="9.5" r="1" fill="#ff4058" />
+          </g>
+        </g>
 
         {/* Roadside Rock & Foliage Details */}
         <g opacity="0.6">
@@ -196,12 +257,6 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
           />
         )}
       </AnimatePresence>
-
-      {/* Road Entry Instructions */}
-      <div className="absolute bottom-3 right-4 px-3 py-1 rounded-full bg-black/60 border border-white/10 backdrop-blur-md text-[10px] font-mono text-brand-green flex items-center gap-1.5 z-10 pointer-events-none">
-        <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-ping" />
-        <span>CLICK ANY MILESTONE STONE TO OPEN INFORMATION</span>
-      </div>
     </div>
   );
 };

@@ -14,13 +14,19 @@ export interface TimelineWeek {
 }
 
 export interface RoadmapMilestone {
-  id: 'NOW' | 'NEXT' | 'FUTURE';
+  id: 'NOW' | 'NEXT' | 'FUTURE' | string;
+  number: string;
+  planId?: string;
+  phase?: string;
+  badge?: string;
+  stageName?: string;
   timeframe: string;
   title: string;
   subtitle: string;
-  tagline: string;
+  tagline?: string;
   accentColor: string;
-  status: 'active' | 'upcoming' | 'vision';
+  status: 'active' | 'upcoming' | 'vision' | 'current';
+  keyPoints?: string[];
   items: string[];
   keyCapabilities: {
     title: string;

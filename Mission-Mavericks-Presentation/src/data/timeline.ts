@@ -163,9 +163,9 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
         'Executive presentation dress rehearsal and delivery alignment',
       ],
       deliverables: [
-        'Production-Ready Showcase Presentation & Live Deployed Apps',
+        'Production-Ready Presentation & Live Deployed Apps',
         'Complete Evidence Hub (FRD, FRS, BPMN Journeys, UI Kit)',
-        'Strategic 3-Horizon Expansion Roadmap (NOW, NEXT, FUTURE)',
+        'Strategic 4-Phase Expansion Roadmap (UNDERSTAND, DESIGN, BUILD, DELIVER)',
       ],
       insights: 'Four weeks of relentless dedication transformed a complex insurance headache into an elegant, scalable, intelligent reality.',
     },
