@@ -181,26 +181,25 @@ export const Slide3TeamReveal: React.FC = () => {
                       {member.name}
                     </h3>
 
-                    {/* Role Badges */}
-                    <div className="flex flex-wrap items-center justify-center gap-1.5 mt-3 max-w-sm">
-                      {member.role.split(',').map((r, rIdx) => {
-                        const trimmedRole = r.trim();
-                        return (
-                          <span
-                            key={rIdx}
-                            className={`inline-flex items-center px-3 py-1 rounded-full border text-[11px] sm:text-xs font-bold tracking-wide uppercase ${
-                              isPremium
-                                ? 'bg-brand-cyan/20 border-brand-cyan/50 text-brand-cyan shadow-glow-cyan/20'
-                                : rIdx === 0
-                                ? 'bg-brand-green/15 border-brand-green/40 text-brand-green'
-                                : 'bg-white/5 border-white/10 text-slate-200'
-                            }`}
-                          >
-                            {trimmedRole}
-                          </span>
-                        );
-                      })}
+                    {/* PRIMARY ROLE ← existing highlighted role color */}
+                    <div className="mt-2 sm:mt-2.5">
+                      <span
+                        className={`inline-flex items-center px-4 py-1.5 rounded-full border text-xs sm:text-sm font-bold tracking-wide uppercase ${
+                          isPremium
+                            ? 'bg-brand-cyan/20 border-brand-cyan text-brand-cyan shadow-glow-cyan/20'
+                            : 'bg-brand-green/15 border-brand-green/40 text-brand-green'
+                        }`}
+                      >
+                        {member.role}
+                      </span>
                     </div>
+
+                    {/* Additional responsibilities ← smaller grey text */}
+                    {member.responsibilities && (
+                      <p className="text-xs sm:text-sm text-slate-400 font-medium leading-relaxed mt-2.5 max-w-sm mx-auto text-center px-1">
+                        {member.responsibilities}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               </AnimatePresence>
