@@ -9,6 +9,7 @@ export const Slide2Reality: React.FC = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [selectedStakeholder, setSelectedStakeholder] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Handle ESC key to close modal
@@ -59,6 +60,10 @@ export const Slide2Reality: React.FC = () => {
     setIsPlaying(false);
   };
 
+  const handleTileClick = (id: string) => {
+    setSelectedStakeholder((prev) => (prev === id ? null : id));
+  };
+
   const stakeholders = [
     {
       id: 'customer',
@@ -66,7 +71,9 @@ export const Slide2Reality: React.FC = () => {
       title: 'Customer',
       color: 'from-orange-500/15 via-amber-500/10 to-red-500/5',
       borderColor: 'border-orange-500/30 hover:border-orange-400',
+      activeBorder: 'border-orange-400 ring-2 ring-orange-400/60 shadow-[0_0_35px_rgba(251,146,60,0.4)]',
       iconBg: 'bg-orange-500/15 text-orange-400 border border-orange-500/30',
+      activeIconBg: 'bg-orange-500/25 text-orange-300 border border-orange-400 shadow-[0_0_15px_rgba(251,146,60,0.5)]',
       glowColor: 'shadow-glow-orange/20',
       bulletColor: 'bg-orange-400 shadow-[0_0_8px_rgba(251,146,60,0.8)]',
       painPoints: [
@@ -83,7 +90,9 @@ export const Slide2Reality: React.FC = () => {
       title: 'Repairer',
       color: 'from-cyan-500/15 via-blue-500/10 to-indigo-500/5',
       borderColor: 'border-cyan-500/30 hover:border-cyan-400',
+      activeBorder: 'border-cyan-400 ring-2 ring-cyan-400/60 shadow-[0_0_35px_rgba(34,211,238,0.4)]',
       iconBg: 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/30',
+      activeIconBg: 'bg-cyan-500/25 text-cyan-300 border border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]',
       glowColor: 'shadow-glow-cyan/20',
       bulletColor: 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]',
       painPoints: [
@@ -100,7 +109,9 @@ export const Slide2Reality: React.FC = () => {
       title: 'Claim Handler',
       color: 'from-purple-500/15 via-violet-500/10 to-pink-500/5',
       borderColor: 'border-purple-500/30 hover:border-purple-400',
+      activeBorder: 'border-purple-400 ring-2 ring-purple-400/60 shadow-[0_0_35px_rgba(192,132,252,0.4)]',
       iconBg: 'bg-purple-500/15 text-purple-400 border border-purple-500/30',
+      activeIconBg: 'bg-purple-500/25 text-purple-300 border border-purple-400 shadow-[0_0_15px_rgba(192,132,252,0.5)]',
       glowColor: 'shadow-glow-purple/20',
       bulletColor: 'bg-purple-400 shadow-[0_0_8px_rgba(192,132,252,0.8)]',
       painPoints: [
@@ -117,7 +128,9 @@ export const Slide2Reality: React.FC = () => {
       title: 'Insurance Company',
       color: 'from-rose-500/15 via-red-500/10 to-orange-500/5',
       borderColor: 'border-rose-500/30 hover:border-rose-400',
+      activeBorder: 'border-rose-400 ring-2 ring-rose-400/60 shadow-[0_0_35px_rgba(251,113,133,0.4)]',
       iconBg: 'bg-rose-500/15 text-rose-400 border border-rose-500/30',
+      activeIconBg: 'bg-rose-500/25 text-rose-300 border border-rose-400 shadow-[0_0_15px_rgba(251,113,133,0.5)]',
       glowColor: 'shadow-glow-red/20',
       bulletColor: 'bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.8)]',
       painPoints: [
@@ -194,14 +207,57 @@ export const Slide2Reality: React.FC = () => {
       >
         {stakeholders.map((item) => {
           const Icon = item.icon;
+          const isSelected = selectedStakeholder === item.id;
+          const isAnySelected = selectedStakeholder !== null;
+          const isDull = isAnySelected && !isSelected;
+
           return (
-            <motion.div key={item.id} variants={itemVariants}>
+            <motion.div
+              key={item.id}
+              variants={itemVariants}
+              animate={{
+                scale: isSelected ? 1.03 : isDull ? 0.96 : 1,
+                opacity: isDull ? 0.28 : 1,
+              }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              className={`cursor-pointer select-none transition-all duration-300 ${
+                isDull ? 'filter grayscale-[50%] brightness-75 hover:opacity-60 hover:grayscale-0' : ''
+              } ${isSelected ? 'z-20' : 'z-10'}`}
+              onClick={() => handleTileClick(item.id)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleTileClick(item.id);
+                }
+              }}
+            >
               <GlassCard
-                className={`h-full flex flex-col justify-start border ${item.borderColor} bg-gradient-to-b ${item.color} ${item.glowColor} relative overflow-hidden p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1`}
+                hoverEffect={!isAnySelected}
+                className={`h-full flex flex-col justify-start border relative overflow-hidden p-5 sm:p-6 transition-all duration-300 ${
+                  isSelected
+                    ? `${item.activeBorder} bg-gradient-to-b ${item.color} backdrop-blur-2xl`
+                    : isDull
+                    ? 'border-white/10 bg-white/[0.02]'
+                    : `border ${item.borderColor} bg-gradient-to-b ${item.color} ${item.glowColor} hover:-translate-y-1`
+                }`}
               >
+                {/* Active Focus Pill Indicator */}
+                {isSelected && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="absolute top-3.5 right-3.5 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 border border-white/30 backdrop-blur-md shadow-sm"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-[10px] uppercase tracking-wider font-extrabold text-white">Active</span>
+                  </motion.div>
+                )}
+
                 {/* Top Icon */}
                 <div className="mb-4">
-                  <div className={`w-fit p-3 rounded-2xl ${item.iconBg}`}>
+                  <div className={`w-fit p-3 rounded-2xl transition-all duration-300 ${isSelected ? item.activeIconBg : item.iconBg}`}>
                     <Icon className="w-6 h-6" />
                   </div>
                 </div>
@@ -214,8 +270,17 @@ export const Slide2Reality: React.FC = () => {
                 {/* 5 Bullet Points */}
                 <ul className="space-y-3">
                   {item.painPoints.map((point, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-200/90 leading-snug font-medium">
-                      <span className={`w-1.5 h-1.5 rounded-full ${item.bulletColor} mt-1.5 shrink-0`} />
+                    <li
+                      key={idx}
+                      className={`flex items-start gap-2.5 text-xs sm:text-[13px] leading-snug font-medium transition-colors duration-200 ${
+                        isSelected ? 'text-white font-semibold' : 'text-slate-200/90'
+                      }`}
+                    >
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full ${item.bulletColor} mt-1.5 shrink-0 transition-transform duration-300 ${
+                          isSelected ? 'scale-125 ring-2 ring-white/40' : ''
+                        }`}
+                      />
                       <span>{point}</span>
                     </li>
                   ))}
