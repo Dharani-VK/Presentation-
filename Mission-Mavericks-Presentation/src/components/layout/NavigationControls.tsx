@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { usePresentation } from '../../context/PresentationContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -45,16 +45,7 @@ export const NavigationControls: React.FC = () => {
               >
                 <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
               </motion.button>
-            ) : (
-              <motion.button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-brand-purple to-brand-pink text-white font-extrabold border border-white/20 backdrop-blur-xl shadow-glow-purple/40"
-              >
-                <Sparkles className="w-4 h-4 text-brand-lime" />
-                <span className="text-xs sm:text-sm">End of Showcase</span>
-              </motion.button>
-            )}
+            ) : null}
           </div>
         </motion.div>
       )}
