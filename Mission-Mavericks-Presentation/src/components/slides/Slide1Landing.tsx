@@ -25,86 +25,87 @@ interface NetworkNode {
   icon: React.ElementType;
   title: string;
   subtitle: string;
-  x: number; // percentage on layout
-  y: number;
-  svgX: number; // SVG viewBox coordinate (1200 x 700)
-  svgY: number;
-  curveControlX: number;
-  curveControlY: number;
+  leftPercent: string;
+  topPercent: string;
+  svgAnchorX: number;
+  svgAnchorY: number;
+  ctrlX: number;
+  ctrlY: number;
 }
 
-const networkNodes: NetworkNode[] = [
+// Coordinate space: 1000 x 460
+const nodes: NetworkNode[] = [
   {
     id: 'customer',
     icon: User,
     title: 'Customer',
     subtitle: 'Seamless experience,\nevery step.',
-    x: 23,
-    y: 24,
-    svgX: 280,
-    svgY: 170,
-    curveControlX: 420,
-    curveControlY: 260,
+    leftPercent: '23%',
+    topPercent: '18%',
+    svgAnchorX: 230,
+    svgAnchorY: 82,
+    ctrlX: 380,
+    ctrlY: 150,
   },
   {
     id: 'vehicle',
     icon: Car,
     title: 'Vehicle',
     subtitle: 'Protected today,\nready for tomorrow.',
-    x: 14,
-    y: 46,
-    svgX: 165,
-    svgY: 320,
-    curveControlX: 380,
-    curveControlY: 335,
+    leftPercent: '10%',
+    topPercent: '48%',
+    svgAnchorX: 100,
+    svgAnchorY: 220,
+    ctrlX: 300,
+    ctrlY: 225,
   },
   {
     id: 'repairer',
     icon: Wrench,
     title: 'Repairer',
     subtitle: 'Quality service,\ntrusted network.',
-    x: 23,
-    y: 69,
-    svgX: 280,
-    svgY: 480,
-    curveControlX: 420,
-    curveControlY: 390,
+    leftPercent: '23%',
+    topPercent: '78%',
+    svgAnchorX: 230,
+    svgAnchorY: 358,
+    ctrlX: 380,
+    ctrlY: 290,
   },
   {
     id: 'insurer',
     icon: ShieldCheck,
     title: 'Insurer',
     subtitle: 'Stronger protection,\nsmarter decisions.',
-    x: 77,
-    y: 25,
-    svgX: 920,
-    svgY: 175,
-    curveControlX: 780,
-    curveControlY: 260,
+    leftPercent: '77%',
+    topPercent: '18%',
+    svgAnchorX: 770,
+    svgAnchorY: 82,
+    ctrlX: 620,
+    ctrlY: 150,
   },
   {
     id: 'claim',
     icon: FileText,
     title: 'Claim',
     subtitle: 'Faster claims,\ngreater satisfaction.',
-    x: 86,
-    y: 47,
-    svgX: 1035,
-    svgY: 330,
-    curveControlX: 820,
-    curveControlY: 335,
+    leftPercent: '90%',
+    topPercent: '48%',
+    svgAnchorX: 900,
+    svgAnchorY: 220,
+    ctrlX: 700,
+    ctrlY: 225,
   },
   {
     id: 'claims-handler',
     icon: Headphones,
     title: 'Claims Handler',
     subtitle: 'Empowered by tech,\ndriven by purpose.',
-    x: 77,
-    y: 71,
-    svgX: 920,
-    svgY: 495,
-    curveControlX: 780,
-    curveControlY: 400,
+    leftPercent: '77%',
+    topPercent: '78%',
+    svgAnchorX: 770,
+    svgAnchorY: 358,
+    ctrlX: 620,
+    ctrlY: 290,
   },
 ];
 
@@ -120,7 +121,7 @@ export const Slide1Landing: React.FC = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Handle ESC key to close video
+  // Handle ESC key to close video modal
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isVideoOpen) {
@@ -144,35 +145,31 @@ export const Slide1Landing: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen z-10 flex flex-col items-center justify-between bg-[#020713] overflow-hidden select-none">
-      {/* ── Background City Highway Image Layer ───── */}
+    <div className="relative w-full h-[calc(100vh-130px)] max-h-[720px] min-h-[520px] flex flex-col items-center justify-between overflow-hidden select-none">
+      {/* ── Background Highway City Layer ───── */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60 z-0 scale-105 transition-transform duration-1000"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 pointer-events-none z-0"
         style={{ backgroundImage: `url(${landingBg})` }}
       />
-      {/* Dark Vignette & Atmospheric Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#020713] via-[#020713]/60 to-[#020713]/80 z-0" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.1)_0%,rgba(2,7,19,0.7)_65%,#020713_100%)] z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#020713]/80 via-transparent to-[#020713] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-radial-vignette opacity-80 pointer-events-none z-0" />
 
-      {/* ── Center Network Diagram & SVG Animated Flow Lines ───── */}
-      <div className="relative z-10 w-full max-w-7xl h-full flex flex-col items-center justify-center px-4 pt-10 pb-6">
-        <div className="relative w-full max-w-6xl aspect-[12/7] flex items-center justify-center">
-          {/* SVG Animated Connecting Lines Layer */}
+      {/* ── Main Orbital Network Canvas (Centered) ───── */}
+      <div className="relative z-10 w-full max-w-6xl flex-1 flex items-center justify-center px-2">
+        <div className="relative w-full aspect-[1000/460] max-h-[460px] flex items-center justify-center">
+          {/* SVG Animated Flow Lines & Orbits */}
           <svg
-            viewBox="0 0 1200 700"
+            viewBox="0 0 1000 460"
             className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
           >
             <defs>
-              {/* Cyan Stream Gradient */}
               <linearGradient id="cyanLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.8" />
                 <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
                 <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.4" />
               </linearGradient>
-
-              {/* Glowing Pulse Filter */}
-              <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="3.5" result="blur" />
+              <filter id="subtleGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
                   <feMergeNode in="SourceGraphic" />
@@ -180,173 +177,148 @@ export const Slide1Landing: React.FC = () => {
               </filter>
             </defs>
 
-            {/* Background Orbit Ellipses */}
+            {/* Background Elliptical Orbit Rings */}
             <ellipse
-              cx="600"
-              cy="330"
-              rx="490"
-              ry="190"
+              cx="500"
+              cy="220"
+              rx="440"
+              ry="165"
               fill="none"
               stroke="rgba(34, 211, 238, 0.12)"
               strokeWidth="1"
-              strokeDasharray="6 8"
-              transform="rotate(-4 600 330)"
+              strokeDasharray="3 5"
+              transform="rotate(-3 500 220)"
             />
             <ellipse
-              cx="600"
-              cy="330"
-              rx="410"
-              ry="150"
+              cx="500"
+              cy="220"
+              rx="330"
+              ry="115"
               fill="none"
               stroke="rgba(34, 211, 238, 0.08)"
               strokeWidth="1"
-              strokeDasharray="4 6"
-              transform="rotate(6 600 330)"
+              strokeDasharray="2 4"
+              transform="rotate(4 500 220)"
             />
 
-            {/* Glowing Center Ripple Rings */}
-            <circle
-              cx="600"
-              cy="330"
-              r="88"
-              fill="none"
-              stroke="rgba(34, 211, 238, 0.2)"
-              strokeWidth="1.5"
-            />
-            <circle
-              cx="600"
-              cy="330"
-              r="120"
-              fill="none"
-              stroke="rgba(34, 211, 238, 0.08)"
-              strokeWidth="1"
-              strokeDasharray="4 6"
-            />
-
-            {/* Render Connecting Bezier Lines & Moving Data Energy Flows */}
-            {networkNodes.map((node) => {
-              const pathD = `M 600 330 Q ${node.curveControlX} ${node.curveControlY} ${node.svgX} ${node.svgY}`;
+            {/* Connecting Bezier Lines with Continuous Moving Energy Pulses */}
+            {nodes.map((node) => {
+              const pathD = `M 500 220 Q ${node.ctrlX} ${node.ctrlY} ${node.svgAnchorX} ${node.svgAnchorY}`;
               return (
                 <g key={node.id}>
-                  {/* Static Base Track Line */}
+                  {/* Clean Static Base Line */}
                   <path
                     d={pathD}
                     fill="none"
-                    stroke="rgba(34, 211, 238, 0.18)"
-                    strokeWidth="1.5"
+                    stroke="rgba(34, 211, 238, 0.25)"
+                    strokeWidth="1.2"
                   />
 
-                  {/* Fast Animated Flowing Stream (Outward and Inward Energy Flow) */}
+                  {/* Moving Dashed Stream */}
                   <path
                     d={pathD}
                     fill="none"
-                    stroke="url(#cyanLineGradient)"
-                    strokeWidth="2.5"
-                    strokeDasharray="14 18"
+                    stroke="#38bdf8"
+                    strokeWidth="1.6"
+                    strokeDasharray="8 45"
                     strokeLinecap="round"
-                    filter="url(#glowFilter)"
+                    opacity="0.85"
+                    filter="url(#subtleGlow)"
                   >
                     <animate
                       attributeName="stroke-dashoffset"
-                      from="128"
+                      from="53"
                       to="0"
-                      dur="2s"
+                      dur="2.2s"
                       repeatCount="indefinite"
                     />
                   </path>
 
-                  {/* Traveling Glowing Light Particle along the connecting line */}
-                  <circle r="3.5" fill="#38bdf8" filter="url(#glowFilter)">
+                  {/* Moving Light Bead along the line */}
+                  <circle r="2.5" fill="#38bdf8" filter="url(#subtleGlow)">
                     <animateMotion
                       path={pathD}
-                      dur="2.4s"
+                      dur="2.6s"
                       repeatCount="indefinite"
-                      rotate="auto"
                     />
                   </circle>
 
-                  {/* Node Anchor Dot */}
+                  {/* Clean Anchor Dot at Node Circle */}
                   <circle
-                    cx={node.svgX}
-                    cy={node.svgY}
-                    r="4"
-                    fill="#38bdf8"
-                    filter="url(#glowFilter)"
+                    cx={node.svgAnchorX}
+                    cy={node.svgAnchorY}
+                    r="3.5"
+                    fill="#22d3ee"
+                    filter="url(#subtleGlow)"
                   />
                   <circle
-                    cx={node.svgX}
-                    cy={node.svgY}
-                    r="8"
+                    cx={node.svgAnchorX}
+                    cy={node.svgAnchorY}
+                    r="6.5"
                     fill="none"
                     stroke="#22d3ee"
                     strokeWidth="1"
-                    opacity="0.6"
+                    opacity="0.4"
                   />
                 </g>
               );
             })}
           </svg>
 
-          {/* ── Central Click To Play Button ───── */}
-          <div className="absolute top-[47%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
+          {/* ── Central CLICK TO PLAY Hub ───── */}
+          <div className="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
             <motion.button
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.94 }}
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.95 }}
               onClick={handleOpenVideo}
-              className="relative group w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-[#050e1f]/90 border-2 border-cyan-400/80 shadow-[0_0_50px_rgba(6,182,212,0.45)] backdrop-blur-2xl flex items-center justify-center cursor-pointer transition-all duration-300 hover:border-cyan-300 hover:shadow-[0_0_70px_rgba(6,182,212,0.7)]"
+              className="relative group w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-[#030914] border-2 border-cyan-400 shadow-[0_0_35px_rgba(6,182,212,0.55)] flex items-center justify-center cursor-pointer transition-all duration-300 hover:border-cyan-300 hover:shadow-[0_0_55px_rgba(6,182,212,0.8)]"
               title="Click to Play Presentation Reveal"
               aria-label="Click to Play Presentation Reveal"
             >
               {/* Outer Pulsing Glow Halo */}
-              <span className="absolute inset-0 rounded-full bg-cyan-400/20 animate-ping opacity-40 pointer-events-none" />
-              <span className="absolute -inset-1.5 rounded-full border border-cyan-400/30 animate-pulse pointer-events-none" />
+              <span className="absolute -inset-2 rounded-full border border-cyan-400/25 animate-pulse pointer-events-none" />
 
               {/* Play Triangle Icon */}
-              <div className="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 text-white transition-transform duration-300 group-hover:scale-110">
-                <Play className="w-9 h-9 sm:w-11 sm:h-11 fill-white text-white translate-x-1 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]" />
-              </div>
+              <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-white text-white translate-x-0.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" />
             </motion.button>
 
             {/* Click to Play Title & Underline */}
-            <div className="mt-4 text-center">
-              <span className="text-xs sm:text-sm font-extrabold font-display tracking-[0.35em] text-white uppercase drop-shadow-md">
+            <div className="mt-3 text-center">
+              <span className="text-[10px] sm:text-xs font-extrabold font-display tracking-[0.35em] text-white uppercase drop-shadow">
                 CLICK TO PLAY
               </span>
-              <div className="w-10 h-0.5 bg-cyan-400 rounded-full mt-1.5 mx-auto shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+              <div className="w-8 h-[2px] bg-cyan-400 rounded-full mt-1 mx-auto shadow-[0_0_6px_rgba(34,211,238,0.8)]" />
             </div>
           </div>
 
-          {/* ── 6 Orbit Nodes around Central Hub ───── */}
-          {networkNodes.map((node) => {
+          {/* ── 6 Orbit Stakeholder Nodes ───── */}
+          {nodes.map((node) => {
             const Icon = node.icon;
-            const isRightSide = node.x > 50;
 
             return (
               <motion.div
                 key={node.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.4 }}
                 style={{
-                  top: `${node.y}%`,
-                  left: `${node.x}%`,
+                  top: node.topPercent,
+                  left: node.leftPercent,
                   transform: 'translate(-50%, -50%)',
                 }}
-                className={`absolute z-20 flex items-center gap-3 md:gap-3.5 ${
-                  isRightSide ? 'flex-row' : 'flex-row'
-                }`}
+                className="absolute z-20 flex items-center gap-2.5 sm:gap-3"
               >
                 {/* Node Icon Circle */}
-                <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#07132b]/85 border border-cyan-400/30 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-xl flex items-center justify-center text-white/95 shrink-0 transition-transform duration-300 hover:scale-105 hover:border-cyan-300">
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-cyan-200" />
+                <div className="w-11 h-11 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-full bg-[#061226]/85 border border-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0 shadow-lg shadow-black/60 transition-transform duration-200 hover:scale-105 hover:border-cyan-400/60">
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[1.6]" />
                 </div>
 
-                {/* Node Title & Description */}
-                <div className="flex flex-col text-left min-w-[130px] sm:min-w-[160px] md:min-w-[180px]">
-                  <h3 className="text-sm sm:text-base md:text-lg font-bold font-display text-white tracking-tight leading-tight">
+                {/* Node Title & Subtitle */}
+                <div className="flex flex-col text-left">
+                  <h3 className="text-xs sm:text-sm md:text-[15px] font-bold font-display text-white tracking-tight leading-tight">
                     {node.title}
                   </h3>
-                  <p className="text-[10px] sm:text-xs md:text-sm text-slate-300/85 font-medium leading-tight mt-0.5 whitespace-pre-line">
+                  <p className="text-[10px] sm:text-[11px] md:text-[12px] text-slate-300/80 font-normal leading-tight mt-0.5 whitespace-pre-line">
                     {node.subtitle}
                   </p>
                 </div>
@@ -354,35 +326,35 @@ export const Slide1Landing: React.FC = () => {
             );
           })}
         </div>
+      </div>
 
-        {/* ── Bottom Feature Pillars & Tagline ───── */}
-        <div className="w-full max-w-2xl flex flex-col items-center text-center mt-2 sm:mt-4 z-20">
-          {/* 4 Pillars Icons Row */}
-          <div className="w-full flex items-center justify-center gap-8 sm:gap-14 md:gap-20 mb-3 text-slate-300">
-            {bottomPillars.map((pillar, idx) => {
-              const PillarIcon = pillar.icon;
-              return (
-                <div
-                  key={idx}
-                  className="flex flex-col items-center gap-1.5 transition-colors duration-200 hover:text-cyan-300 cursor-default"
-                >
-                  <PillarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300" />
-                  <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-slate-300">
-                    {pillar.label}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Bottom Tagline */}
-          <p className="text-xs sm:text-sm md:text-base font-medium text-slate-300/90 tracking-wide">
-            Connected today.{' '}
-            <span className="text-cyan-400 font-semibold drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
-              Protected tomorrow.
-            </span>
-          </p>
+      {/* ── Bottom Feature Pillars & Tagline ───── */}
+      <div className="relative z-10 w-full max-w-2xl flex flex-col items-center text-center pb-2">
+        {/* 4 Pillars Icons Row */}
+        <div className="w-full flex items-center justify-center gap-8 sm:gap-12 md:gap-16 mb-2 text-slate-300">
+          {bottomPillars.map((pillar, idx) => {
+            const PillarIcon = pillar.icon;
+            return (
+              <div
+                key={idx}
+                className="flex flex-col items-center gap-1 transition-colors duration-200 hover:text-cyan-300 cursor-default"
+              >
+                <PillarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300 stroke-[1.5]" />
+                <span className="text-[10px] sm:text-xs font-medium text-slate-300">
+                  {pillar.label}
+                </span>
+              </div>
+            );
+          })}
         </div>
+
+        {/* Bottom Tagline */}
+        <p className="text-xs sm:text-sm font-normal text-slate-300/90 tracking-wide">
+          Connected today.{' '}
+          <span className="text-cyan-400 font-semibold drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">
+            Protected tomorrow.
+          </span>
+        </p>
       </div>
 
       {/* ── Fullscreen Video Modal Portal ───── */}
