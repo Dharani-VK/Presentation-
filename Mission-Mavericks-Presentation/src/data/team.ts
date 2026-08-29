@@ -109,8 +109,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: 'pavithra-aruchamy',
     name: 'Pavithra Aruchamy',
     role: 'Scrum Master',
-    responsibilities: 'QA, Innovation, PMO',
-    focus: ['QA', 'Innovation', 'PMO'],
+    responsibilities: 'QA, Innovation, PMO, Website Front End Developer',
+    focus: ['QA', 'Innovation', 'PMO', 'Website Front End Developer'],
     image: pavithraImg,
   },
 ];
