@@ -4,22 +4,6 @@ import { Layers } from 'lucide-react';
 import { TEAM_MEMBERS } from '../../data/team';
 import missionMavericksLogo from '../../Assets/mission-mavericks-logo.png';
 
-// ─── Fallback Avatar ───────────────────────────────────────────────────────────
-const FallbackAvatar: React.FC<{ name: string }> = ({ name }) => {
-  const initials = name
-    .split(' ')
-    .slice(0, 2)
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase();
-
-  return (
-    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-blue/30 via-brand-cyan/20 to-brand-green/20 text-4xl sm:text-5xl font-black font-display text-white/80 select-none">
-      {initials}
-    </div>
-  );
-};
-
 // ─── Animation Variants ────────────────────────────────────────────────────────
 const cardVariants: Variants = {
   enter: (direction: number) => ({
@@ -52,7 +36,6 @@ const cardVariants: Variants = {
 export const Slide3TeamReveal: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [imgError, setImgError] = useState<Record<string, boolean>>({});
 
   const total = TEAM_MEMBERS.length;
 
@@ -176,19 +159,21 @@ export const Slide3TeamReveal: React.FC = () => {
                     {/* Photo with Clean Gradient Ring */}
                     <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-brand-blue via-brand-cyan to-brand-green mb-3">
                       <div className="w-full h-full rounded-full overflow-hidden bg-[#06152f]">
-                        {imgError[member.id] ? (
-                          <FallbackAvatar name={member.name} />
-                        ) : (
-                          <img
-                            key={member.id}
-                            src={member.image}
-                            alt={member.name}
-                            loading="eager"
-                            decoding="async"
-                            className="w-full h-full object-cover object-top"
-                            onError={() => setImgError((p) => ({ ...p, [member.id]: true }))}
-                          />
-                        )}
+                        <img
+                          key={member.id}
+                          src={member.image}
+                          alt={member.name}
+                          loading="eager"
+                          decoding="async"
+                          className="w-full h-full object-cover object-top"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            if (!target.dataset.triedPublic) {
+                              target.dataset.triedPublic = 'true';
+                              target.src = `/images/${member.id}.jpg`;
+                            }
+                          }}
+                        />
                       </div>
                     </div>
 
