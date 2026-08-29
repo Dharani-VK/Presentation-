@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { Layers } from 'lucide-react';
 import { TEAM_MEMBERS } from '../../data/team';
 import missionMavericksLogo from '../../Assets/mission-mavericks-logo.png';
 
@@ -184,7 +183,7 @@ export const Slide3TeamReveal: React.FC = () => {
 
                     {/* Primary Role Badge */}
                     <span
-                      className={`inline-flex items-center px-4 py-1 rounded-full border text-xs sm:text-sm font-bold tracking-wide uppercase mt-2 ${
+                      className={`inline-flex items-center px-4 py-1.5 rounded-full border text-xs sm:text-sm font-bold tracking-wide uppercase mt-3 ${
                         isPremium
                           ? 'bg-brand-cyan/20 border-brand-cyan text-brand-cyan shadow-glow-cyan/20'
                           : 'bg-brand-green/15 border-brand-green/40 text-brand-green'
@@ -192,26 +191,6 @@ export const Slide3TeamReveal: React.FC = () => {
                     >
                       {member.role}
                     </span>
-
-                    {/* Core Roles & Contributions (Non-repeating) */}
-                    {member.focus && member.focus.length > 0 && (
-                      <div className="mt-4 pt-3 border-t border-white/10 w-full">
-                        <div className="flex items-center justify-center gap-1.5 text-[11px] font-mono text-brand-cyan mb-2 font-bold tracking-wider uppercase">
-                          <Layers className="w-3.5 h-3.5" />
-                          <span>Core Roles & Contributions</span>
-                        </div>
-                        <div className="flex flex-wrap items-center justify-center gap-1.5 max-w-sm mx-auto">
-                          {member.focus.map((item, idx) => (
-                            <span
-                              key={idx}
-                              className="text-[11px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/90 font-medium hover:border-brand-cyan/50 hover:bg-brand-cyan/10 transition-colors"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </motion.div>
               </AnimatePresence>

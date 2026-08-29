@@ -2,12 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import claimShieldLogo from '../../Assets/image.png';
 import roboxVideo from '../../Assets/Robox.mp4';
-import { RotateCcw, Volume2, VolumeX } from 'lucide-react';
 
 export const Slide5ProductReveal: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isEnded, setIsEnded] = useState(false);
   const [textRevealed, setTextRevealed] = useState(false);
 
   useEffect(() => {
@@ -19,7 +16,6 @@ export const Slide5ProductReveal: React.FC = () => {
       .play()
       .catch(() => {
         video.muted = true;
-        setIsMuted(true);
         video.play().catch(() => {});
       });
 
@@ -32,7 +28,6 @@ export const Slide5ProductReveal: React.FC = () => {
 
     // When video completes fully, stop and keep paused on final frame (plays only once)
     const handleEnded = () => {
-      setIsEnded(true);
       setTextRevealed(true);
       video.pause();
     };
@@ -52,21 +47,6 @@ export const Slide5ProductReveal: React.FC = () => {
     };
   }, []);
 
-  const handleReplay = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!videoRef.current) return;
-    videoRef.current.currentTime = 0;
-    videoRef.current.play();
-    setIsEnded(false);
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
-
   return (
     <div className="relative w-full min-h-[580px] flex flex-col items-center justify-center py-4 px-4 select-none">
       {/* ── Slide 5 Background Layer (Exact dark tone matching video background) ───── */}
@@ -78,7 +58,7 @@ export const Slide5ProductReveal: React.FC = () => {
           ref={videoRef}
           src={roboxVideo}
           autoPlay
-          muted={isMuted}
+          muted
           playsInline
           style={{
             maskImage: 'linear-gradient(to right, black 80%, transparent 100%)',
@@ -86,30 +66,6 @@ export const Slide5ProductReveal: React.FC = () => {
           }}
           className="w-full h-full object-contain object-left"
         />
-      </div>
-
-      {/* ── Subtle Controls (Mute / Replay in bottom-right) ───── */}
-      <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
-        <button
-          onClick={toggleMute}
-          className="p-2 rounded-full bg-black/50 hover:bg-black/80 text-white/70 hover:text-white border border-white/10 backdrop-blur-md transition-all cursor-pointer"
-          title={isMuted ? 'Unmute' : 'Mute'}
-          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-        >
-          {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-brand-cyan" />}
-        </button>
-
-        {isEnded && (
-          <button
-            onClick={handleReplay}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/80 text-brand-green border border-brand-green/30 backdrop-blur-md transition-all cursor-pointer text-xs font-bold font-display"
-            title="Replay Video"
-            aria-label="Replay video"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>Replay</span>
-          </button>
-        )}
       </div>
 
       {/* ── Centered Page Contents (Shifted significantly up, revealed strictly after 6s) ───── */}

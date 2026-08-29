@@ -5,7 +5,6 @@ import { GlowingButton } from '../common/GlowingButton';
 import { usePresentation } from '../../context/PresentationContext';
 import { JOURNEY_MILESTONES, JourneyMilestone } from '../../data/timeline';
 import {
-  Calendar,
   ArrowRight,
   BookOpen,
   ClipboardList,
@@ -24,15 +23,6 @@ export const Slide4Timeline: React.FC = () => {
     <div className="w-full max-w-7xl mx-auto flex flex-col justify-center py-2 sm:py-4">
       {/* Header */}
       <div className="flex flex-col items-center text-center mb-6">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-blue/15 border border-brand-blue/30 text-brand-blue text-xs uppercase font-extrabold tracking-widest mb-2"
-        >
-          <Calendar className="w-3.5 h-3.5" />
-          <span>Our 4-Milestone Journey</span>
-        </motion.div>
-
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}

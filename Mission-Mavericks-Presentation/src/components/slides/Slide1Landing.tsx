@@ -2,31 +2,27 @@ import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePresentation } from '../../context/PresentationContext';
 import revealFirstPageVideo from '../../Assets/Reveal first page.mp4';
-import { Play, ArrowRight, RotateCcw } from 'lucide-react';
+import { Play, ArrowRight } from 'lucide-react';
 
 export const Slide1Landing: React.FC = () => {
   const { nextSlide } = usePresentation();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasStarted, setHasStarted] = useState(false);
-  const [isEnded, setIsEnded] = useState(false);
 
   const startPlayback = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!videoRef.current) return;
-    videoRef.current.currentTime = 0;
-    videoRef.current
-      .play()
-      .then(() => {
-        setHasStarted(true);
-        setIsEnded(false);
-      })
-      .catch((err) => {
-        console.error('Play error:', err);
-      });
+    setHasStarted(true);
+    setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play().catch((err) => {
+          console.error('Play error:', err);
+        });
+      }
+    }, 50);
   };
 
   const handleVideoEnded = () => {
-    setIsEnded(true);
     if (videoRef.current) {
       videoRef.current.pause();
     }
@@ -34,18 +30,21 @@ export const Slide1Landing: React.FC = () => {
 
   return (
     <div className="fixed inset-0 w-screen h-screen z-20 flex items-center justify-center bg-[#020713] overflow-hidden select-none">
-      {/* Fullscreen Video */}
+      {/* Fullscreen Video (Hidden until Play button is clicked) */}
       <div className="w-full h-full flex items-center justify-center relative">
-        <video
-          ref={videoRef}
-          src={revealFirstPageVideo}
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
-          onEnded={handleVideoEnded}
-        />
+        {hasStarted && (
+          <video
+            ref={videoRef}
+            src={revealFirstPageVideo}
+            autoPlay
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover"
+            onEnded={handleVideoEnded}
+          />
+        )}
 
-        {/* Play Button Overlay (Video plays ONLY after clicking the play button) */}
+        {/* Play Button Overlay (Solid dark background hiding all behind content until clicked) */}
         <AnimatePresence>
           {!hasStarted && (
             <motion.div
@@ -53,7 +52,7 @@ export const Slide1Landing: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.35 }}
-              className="absolute inset-0 flex flex-col items-center justify-center bg-black/65 backdrop-blur-sm z-30 cursor-pointer"
+              className="absolute inset-0 flex flex-col items-center justify-center bg-[#020713] z-30 cursor-pointer"
               onClick={startPlayback}
             >
               <motion.button
@@ -79,18 +78,9 @@ export const Slide1Landing: React.FC = () => {
           )}
         </AnimatePresence>
 
-        {/* Continue & Navigation Controls after video has started */}
+        {/* Continue Navigation Button after video has started */}
         {hasStarted && (
           <div className="absolute bottom-8 right-8 z-30 flex items-center gap-3">
-            {isEnded && (
-              <button
-                onClick={startPlayback}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/20 backdrop-blur-md transition-all text-xs font-bold font-display cursor-pointer"
-              >
-                <RotateCcw className="w-3.5 h-3.5 text-brand-green" />
-                <span>Replay</span>
-              </button>
-            )}
             <button
               onClick={nextSlide}
               className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-cyan to-brand-green text-brand-navy hover:brightness-110 font-bold font-display text-sm tracking-wide shadow-lg shadow-brand-cyan/20 transition-all cursor-pointer"
@@ -104,6 +94,7 @@ export const Slide1Landing: React.FC = () => {
     </div>
   );
 };
+
 
 
 
