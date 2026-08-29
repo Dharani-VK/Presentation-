@@ -8,6 +8,9 @@ export const SlideNavbar: React.FC = () => {
   const { currentSlide, goToSlide, slides } = usePresentation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Header is hidden on the Home slide (currentSlide === 0) until navigating to Team Members (currentSlide >= 1)
+  if (currentSlide === 0) return null;
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -30 }}

@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { usePresentation } from '../../context/PresentationContext';
 import firstPageVideo from '../../Assets/first page .mp4';
 import revealFirstPageVideo from '../../Assets/Reveal first page.mp4';
-import { ChevronRight, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Slide1Landing: React.FC = () => {
@@ -13,6 +13,11 @@ export const Slide1Landing: React.FC = () => {
 
   const handleStartReveal = () => {
     setStage('reveal');
+  };
+
+  const handleBackToIntro = () => {
+    setStage('intro');
+    setRevealEnded(false);
   };
 
   const handleRevealEnded = () => {
@@ -120,7 +125,23 @@ export const Slide1Landing: React.FC = () => {
               onEnded={handleRevealEnded}
             />
 
-            {/* Floating Next Button during/after reveal video */}
+            {/* Fixed Bottom Left: Previous Page Arrow Button */}
+            <div className="fixed bottom-5 left-5 sm:bottom-7 sm:left-8 z-40 pointer-events-auto">
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                onClick={handleBackToIntro}
+                whileHover={{ scale: 1.1, x: -2 }}
+                whileTap={{ scale: 0.92 }}
+                className="group flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#051126]/90 hover:bg-[#051126] text-white border border-cyan-400/50 hover:border-cyan-300 shadow-[0_0_25px_rgba(6,182,212,0.5)] backdrop-blur-xl transition-all cursor-pointer"
+                title="Previous Video"
+                aria-label="Previous Video"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white transition-transform group-hover:-translate-x-0.5" />
+              </motion.button>
+            </div>
+
+            {/* Fixed Bottom Right: Next Page Arrow Button */}
             <div className="fixed bottom-5 right-5 sm:bottom-7 sm:right-8 z-40 pointer-events-auto">
               <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
