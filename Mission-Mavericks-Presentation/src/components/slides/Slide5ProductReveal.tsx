@@ -68,12 +68,12 @@ export const Slide5ProductReveal: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[600px] flex flex-col items-center justify-center py-6 px-4 overflow-hidden select-none">
+    <div className="relative w-full min-h-[600px] flex flex-col items-center justify-center py-6 px-4 select-none">
       {/* ── Slide 5 Background Layer (Exact dark tone matching video background) ───── */}
       <div className="fixed inset-0 bg-[#030712] z-0 pointer-events-none" />
 
-      {/* ── Left Region Full Uncropped Video Background ───── */}
-      <div className="absolute left-0 sm:left-2 lg:left-6 top-1/2 -translate-y-1/2 w-[48vw] max-w-[560px] h-[82vh] max-h-[640px] pointer-events-none z-0 flex items-center justify-start overflow-visible">
+      {/* ── Left Corner Video Background (Flush to absolute screen corner x=0, no padding, uncropped) ───── */}
+      <div className="fixed left-0 inset-y-0 w-[48vw] max-w-[580px] h-full pointer-events-none z-0 flex items-center justify-start overflow-hidden">
         <video
           ref={videoRef}
           src={roboxVideo}
