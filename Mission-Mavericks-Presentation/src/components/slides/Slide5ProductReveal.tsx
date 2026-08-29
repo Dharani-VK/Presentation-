@@ -108,16 +108,16 @@ export const Slide5ProductReveal: React.FC = () => {
         )}
       </div>
 
-      {/* ── Centered Page Contents (Revealed after 6 seconds) ───── */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center">
+      {/* ── Centered Page Contents (Shifted upper for professional alignment with Robox video, revealed after 6s) ───── */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center -mt-6 sm:-mt-10 lg:-mt-14">
         {/* 1. SINGLE LINE HEADLINE (Centered) */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={textRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="w-full text-center mb-10 sm:mb-14"
+          className="w-full text-center mb-6 sm:mb-8"
         >
-          <h2 className="w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-extrabold font-display tracking-tight whitespace-nowrap flex items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-white">
+          <h2 className="w-full text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-extrabold font-display tracking-tight whitespace-nowrap flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-10 text-white">
             <span>We understood the problem</span>
             <span>We learned the business</span>
             <span>We redesigned the journey</span>
@@ -136,8 +136,8 @@ export const Slide5ProductReveal: React.FC = () => {
           className="flex flex-col items-center text-center"
         >
           {/* Shield Emblem Image */}
-          <div className="relative mb-6 flex items-center justify-center">
-            <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 flex items-center justify-center">
+          <div className="relative mb-4 sm:mb-5 flex items-center justify-center">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center">
               <img
                 src={claimShieldLogo}
                 alt="ClaimShield+ Logo"
@@ -147,17 +147,17 @@ export const Slide5ProductReveal: React.FC = () => {
           </div>
 
           {/* Product Brand Title: ClaimShield+ */}
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black font-display tracking-tight text-white leading-none">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black font-display tracking-tight text-white leading-none">
             Claim<span className="bg-gradient-to-r from-brand-green via-brand-cyan to-brand-lime bg-clip-text text-transparent">Shield+</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-2xl md:text-3xl font-bold font-display text-white/90 mt-4 tracking-tight">
+          <p className="text-base sm:text-xl md:text-2xl font-bold font-display text-white/90 mt-3 sm:mt-4 tracking-tight">
             Motor OD Claim Management Platform
           </p>
 
           {/* Tagline Placed Last */}
-          <p className="text-sm sm:text-base md:text-lg font-semibold text-[#5ce1e6] mt-3 sm:mt-4 tracking-wide">
+          <p className="text-xs sm:text-sm md:text-base font-semibold text-[#5ce1e6] mt-2 sm:mt-3 tracking-wide">
             Trust Every Claim. Transform Every Outcome.
           </p>
         </motion.div>
