@@ -23,9 +23,9 @@ export const Slide5ProductReveal: React.FC = () => {
         video.play().catch(() => {});
       });
 
-    // Reveal text after 0.6 seconds of video playback
+    // Reveal text after 6 seconds of video playback
     const handleTimeUpdate = () => {
-      if (video.currentTime >= 0.6) {
+      if (video.currentTime >= 6) {
         setTextRevealed(true);
       }
     };
@@ -33,16 +33,17 @@ export const Slide5ProductReveal: React.FC = () => {
     // When video completes fully, stop and keep paused on final frame (plays only once)
     const handleEnded = () => {
       setIsEnded(true);
+      setTextRevealed(true);
       video.pause();
     };
 
     video.addEventListener('timeupdate', handleTimeUpdate);
     video.addEventListener('ended', handleEnded);
 
-    // Guaranteed fallback timer for 0.6s reveal
+    // Guaranteed fallback timer for 6 seconds reveal
     const timer = setTimeout(() => {
       setTextRevealed(true);
-    }, 600);
+    }, 6000);
 
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate);
@@ -68,21 +69,22 @@ export const Slide5ProductReveal: React.FC = () => {
 
   return (
     <div className="relative w-full min-h-[580px] flex flex-col items-center justify-center py-6 px-4 overflow-hidden select-none">
-      {/* ── Background Video (Full cover, plays only once, no outer box) ───── */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+      {/* ── Left Region Background Video (Cover of left side, no outer box, plays only once) ───── */}
+      <div className="absolute left-0 top-0 bottom-0 w-full sm:w-1/2 md:w-5/12 lg:w-4/12 xl:w-1/3 overflow-hidden pointer-events-none z-0">
         <video
           ref={videoRef}
           src={roboxVideo}
           autoPlay
           muted={isMuted}
           playsInline
-          className="w-full h-full object-cover object-center opacity-45"
+          className="w-full h-full object-cover object-center"
         />
-        {/* Subtle dark vignette overlay for optimal text contrast and premium look */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020713]/80 via-[#020713]/55 to-[#020713]/85" />
+        {/* Soft edge blend overlays into dark canvas */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#020713]/30 to-[#020713]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020713]/50 via-transparent to-[#020713]/80" />
       </div>
 
-      {/* ── Subtle Background Controls (Mute / Replay in bottom-right) ───── */}
+      {/* ── Subtle Controls (Mute / Replay in bottom-right) ───── */}
       <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
         <button
           onClick={toggleMute}
@@ -106,13 +108,13 @@ export const Slide5ProductReveal: React.FC = () => {
         )}
       </div>
 
-      {/* ── Centered Page Contents (Reveals after 0.6s) ───── */}
+      {/* ── Centered Page Contents (Revealed after 6 seconds) ───── */}
       <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center">
         {/* 1. SINGLE LINE HEADLINE (Centered) */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={textRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           className="w-full text-center mb-10 sm:mb-14"
         >
           <h2 className="w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-extrabold font-display tracking-tight whitespace-nowrap flex items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-white">
@@ -124,13 +126,13 @@ export const Slide5ProductReveal: React.FC = () => {
 
         {/* 2. PRODUCT BRAND REVEAL (Centered) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 25 }}
+          initial={{ opacity: 0, scale: 0.88, y: 25 }}
           animate={
             textRevealed
               ? { opacity: 1, scale: 1, y: 0 }
-              : { opacity: 0, scale: 0.9, y: 25 }
+              : { opacity: 0, scale: 0.88, y: 25 }
           }
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center text-center"
         >
           {/* Shield Emblem Image */}
@@ -163,6 +165,7 @@ export const Slide5ProductReveal: React.FC = () => {
     </div>
   );
 };
+
 
 
 
