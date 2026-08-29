@@ -68,18 +68,22 @@ export const Slide5ProductReveal: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[600px] flex flex-col items-center justify-center py-6 px-4 select-none">
+    <div className="relative w-full min-h-[580px] flex flex-col items-center justify-center py-4 px-4 select-none">
       {/* ── Slide 5 Background Layer (Exact dark tone matching video background) ───── */}
-      <div className="fixed inset-0 bg-[#030712] z-0 pointer-events-none" />
+      <div className="fixed inset-0 bg-gradient-to-br from-[#060c18] via-[#050b16] to-[#040812] z-0 pointer-events-none" />
 
-      {/* ── Left Corner Video Background (Flush to absolute screen corner x=0, no padding, uncropped) ───── */}
-      <div className="fixed left-0 inset-y-0 w-[48vw] max-w-[580px] h-full pointer-events-none z-0 flex items-center justify-start overflow-hidden">
+      {/* ── Left Corner Video Background (Flush to screen edge with soft right edge blend) ───── */}
+      <div className="fixed left-0 inset-y-0 w-[45vw] max-w-[540px] h-full pointer-events-none z-0 flex items-center justify-start overflow-hidden">
         <video
           ref={videoRef}
           src={roboxVideo}
           autoPlay
           muted={isMuted}
           playsInline
+          style={{
+            maskImage: 'linear-gradient(to right, black 80%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to right, black 80%, transparent 100%)',
+          }}
           className="w-full h-full object-contain object-left"
         />
       </div>
@@ -108,14 +112,14 @@ export const Slide5ProductReveal: React.FC = () => {
         )}
       </div>
 
-      {/* ── Centered Page Contents (Shifted upper for professional alignment with Robox video, revealed after 6s) ───── */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center -mt-6 sm:-mt-10 lg:-mt-14">
-        {/* 1. SINGLE LINE HEADLINE (Centered) */}
+      {/* ── Centered Page Contents (Shifted significantly up, revealed strictly after 6s) ───── */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center -mt-16 sm:-mt-24 lg:-mt-28">
+        {/* 1. SINGLE LINE HEADLINE (Centered, revealed after 6s) */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={textRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="w-full text-center mb-6 sm:mb-8"
+          className="w-full text-center mb-5 sm:mb-6"
         >
           <h2 className="w-full text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-extrabold font-display tracking-tight whitespace-nowrap flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-10 text-white">
             <span>We understood the problem</span>
@@ -124,7 +128,7 @@ export const Slide5ProductReveal: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* 2. PRODUCT BRAND REVEAL (Centered) */}
+        {/* 2. PRODUCT BRAND REVEAL (Centered, revealed after 6s) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.88, y: 25 }}
           animate={
@@ -136,8 +140,8 @@ export const Slide5ProductReveal: React.FC = () => {
           className="flex flex-col items-center text-center"
         >
           {/* Shield Emblem Image */}
-          <div className="relative mb-4 sm:mb-5 flex items-center justify-center">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center">
+          <div className="relative mb-3 sm:mb-4 flex items-center justify-center">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center">
               <img
                 src={claimShieldLogo}
                 alt="ClaimShield+ Logo"
@@ -152,12 +156,12 @@ export const Slide5ProductReveal: React.FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-xl md:text-2xl font-bold font-display text-white/90 mt-3 sm:mt-4 tracking-tight">
+          <p className="text-sm sm:text-lg md:text-xl font-bold font-display text-white/90 mt-2.5 sm:mt-3 tracking-tight">
             Motor OD Claim Management Platform
           </p>
 
           {/* Tagline Placed Last */}
-          <p className="text-xs sm:text-sm md:text-base font-semibold text-[#5ce1e6] mt-2 sm:mt-3 tracking-wide">
+          <p className="text-xs sm:text-sm font-semibold text-[#5ce1e6] mt-2 tracking-wide">
             Trust Every Claim. Transform Every Outcome.
           </p>
         </motion.div>
@@ -165,6 +169,7 @@ export const Slide5ProductReveal: React.FC = () => {
     </div>
   );
 };
+
 
 
 
