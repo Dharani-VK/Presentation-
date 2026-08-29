@@ -19,9 +19,9 @@ export const Slide5ProductReveal: React.FC = () => {
         video.play().catch(() => {});
       });
 
-    // Reveal text after 6 seconds of video playback
+    // Reveal text after 7 seconds of video playback
     const handleTimeUpdate = () => {
-      if (video.currentTime >= 6) {
+      if (video.currentTime >= 7) {
         setTextRevealed(true);
       }
     };
@@ -35,10 +35,10 @@ export const Slide5ProductReveal: React.FC = () => {
     video.addEventListener('timeupdate', handleTimeUpdate);
     video.addEventListener('ended', handleEnded);
 
-    // Guaranteed fallback timer for 6 seconds reveal
+    // Guaranteed fallback timer for 7 seconds reveal
     const timer = setTimeout(() => {
       setTextRevealed(true);
-    }, 6000);
+    }, 7000);
 
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate);
