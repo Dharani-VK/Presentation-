@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { usePresentation } from '../../context/PresentationContext';
 import firstPageVideo from '../../Assets/first page.mp4';
 import revealFirstPageVideo from '../../Assets/Reveal first page.mp4';
+import firstPageBg from '../../Assets/first page bd.gif';
 import { ChevronRight, ChevronLeft, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -40,7 +41,7 @@ export const Slide1Landing: React.FC = () => {
     <div className="fixed inset-0 w-screen h-screen z-20 flex items-center justify-center bg-[#02050e] overflow-hidden select-none">
       <AnimatePresence mode="wait">
         {stage === 'intro' ? (
-          /* ── Stage 1: Half-Page Video (Left) + Compact "LET'S START" (Right) ───── */
+          /* ── Stage 1: Half-Page Video (Left) + Compact "LET'S BEGIN" (Right) ───── */
           <motion.div
             key="intro-stage"
             initial={{ opacity: 0 }}
@@ -49,9 +50,17 @@ export const Slide1Landing: React.FC = () => {
             transition={{ duration: 0.45 }}
             className="relative z-10 w-full h-full flex items-center justify-center px-6 sm:px-12 lg:px-16 py-8"
           >
+            {/* Background Transparent "first page bd" Animated Backdrop */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none z-0 scale-105"
+              style={{ backgroundImage: `url(${firstPageBg})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#02050e]/80 via-[#02050e]/45 to-[#02050e] pointer-events-none z-0" />
+            <div className="absolute inset-0 bg-radial-vignette opacity-75 pointer-events-none z-0" />
+
             {/* Background Ambient Glows */}
-            <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-cyan-500/10 blur-[130px] rounded-full pointer-events-none" />
-            <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none" />
+            <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-cyan-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
+            <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none z-0" />
 
             <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-14">
               {/* ── Left Half: Video Card (50% Width) ───── */}
