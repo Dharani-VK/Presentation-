@@ -20,7 +20,7 @@ export const SlideNavbar: React.FC = () => {
         <button
           onClick={() => goToSlide(0)}
           className="flex items-center gap-2.5 text-left group cursor-pointer"
-          title="Return to Slide 1"
+          title="Return to Home"
         >
           <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 flex items-center justify-center">
             <img

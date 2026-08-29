@@ -16,7 +16,7 @@ const SlideRenderer: React.FC = () => {
 
   switch (currentSlide) {
     case 0:
-      return <Slide1Landing />; // 1 Title
+      return <Slide1Landing />; // 1 Home
     case 1:
       return <Slide3TeamReveal />; // 2 Team Members
     case 2:
