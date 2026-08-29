@@ -69,13 +69,12 @@ export const Slide2Reality: React.FC = () => {
       id: 'customer',
       icon: User,
       title: 'Customer',
-      color: 'from-orange-500/15 via-amber-500/10 to-red-500/5',
-      borderColor: 'border-orange-500/30 hover:border-orange-400',
-      activeBorder: 'border-orange-400 ring-2 ring-orange-400/60 shadow-[0_0_35px_rgba(251,146,60,0.4)]',
-      iconBg: 'bg-orange-500/15 text-orange-400 border border-orange-500/30',
-      activeIconBg: 'bg-orange-500/25 text-orange-300 border border-orange-400 shadow-[0_0_15px_rgba(251,146,60,0.5)]',
-      glowColor: 'shadow-glow-orange/20',
-      bulletColor: 'bg-orange-400 shadow-[0_0_8px_rgba(251,146,60,0.8)]',
+      color: 'from-orange-500/12 via-amber-500/5 to-transparent',
+      borderColor: 'border-orange-500/25 hover:border-orange-500/40',
+      activeBorder: 'border-orange-400/70 bg-white/[0.06] shadow-xl',
+      iconBg: 'bg-orange-500/10 text-orange-400 border border-orange-500/20',
+      activeIconBg: 'bg-orange-500/20 text-orange-300 border border-orange-400/40',
+      bulletColor: 'bg-orange-400',
       painPoints: [
         'Long Wait Times',
         'Limited Transparency',
@@ -88,13 +87,12 @@ export const Slide2Reality: React.FC = () => {
       id: 'repairer',
       icon: Wrench,
       title: 'Repairer',
-      color: 'from-cyan-500/15 via-blue-500/10 to-indigo-500/5',
-      borderColor: 'border-cyan-500/30 hover:border-cyan-400',
-      activeBorder: 'border-cyan-400 ring-2 ring-cyan-400/60 shadow-[0_0_35px_rgba(34,211,238,0.4)]',
-      iconBg: 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/30',
-      activeIconBg: 'bg-cyan-500/25 text-cyan-300 border border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]',
-      glowColor: 'shadow-glow-cyan/20',
-      bulletColor: 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]',
+      color: 'from-cyan-500/12 via-blue-500/5 to-transparent',
+      borderColor: 'border-cyan-500/25 hover:border-cyan-400/40',
+      activeBorder: 'border-cyan-400/70 bg-white/[0.06] shadow-xl',
+      iconBg: 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20',
+      activeIconBg: 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/40',
+      bulletColor: 'bg-cyan-400',
       painPoints: [
         'Delayed Authorizations',
         'Inspection Dependencies',
@@ -107,13 +105,12 @@ export const Slide2Reality: React.FC = () => {
       id: 'handler',
       icon: Briefcase,
       title: 'Claim Handler',
-      color: 'from-purple-500/15 via-violet-500/10 to-pink-500/5',
-      borderColor: 'border-purple-500/30 hover:border-purple-400',
-      activeBorder: 'border-purple-400 ring-2 ring-purple-400/60 shadow-[0_0_35px_rgba(192,132,252,0.4)]',
-      iconBg: 'bg-purple-500/15 text-purple-400 border border-purple-500/30',
-      activeIconBg: 'bg-purple-500/25 text-purple-300 border border-purple-400 shadow-[0_0_15px_rgba(192,132,252,0.5)]',
-      glowColor: 'shadow-glow-purple/20',
-      bulletColor: 'bg-purple-400 shadow-[0_0_8px_rgba(192,132,252,0.8)]',
+      color: 'from-purple-500/12 via-violet-500/5 to-transparent',
+      borderColor: 'border-purple-500/25 hover:border-purple-400/40',
+      activeBorder: 'border-purple-400/70 bg-white/[0.06] shadow-xl',
+      iconBg: 'bg-purple-500/10 text-purple-400 border border-purple-500/20',
+      activeIconBg: 'bg-purple-500/20 text-purple-300 border border-purple-400/40',
+      bulletColor: 'bg-purple-400',
       painPoints: [
         'Too Much Paperwork',
         'Multiple System Dependency',
@@ -126,13 +123,12 @@ export const Slide2Reality: React.FC = () => {
       id: 'insurance',
       icon: Building2,
       title: 'Insurance Company',
-      color: 'from-rose-500/15 via-red-500/10 to-orange-500/5',
-      borderColor: 'border-rose-500/30 hover:border-rose-400',
-      activeBorder: 'border-rose-400 ring-2 ring-rose-400/60 shadow-[0_0_35px_rgba(251,113,133,0.4)]',
-      iconBg: 'bg-rose-500/15 text-rose-400 border border-rose-500/30',
-      activeIconBg: 'bg-rose-500/25 text-rose-300 border border-rose-400 shadow-[0_0_15px_rgba(251,113,133,0.5)]',
-      glowColor: 'shadow-glow-red/20',
-      bulletColor: 'bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.8)]',
+      color: 'from-rose-500/12 via-red-500/5 to-transparent',
+      borderColor: 'border-rose-500/25 hover:border-rose-400/40',
+      activeBorder: 'border-rose-400/70 bg-white/[0.06] shadow-xl',
+      iconBg: 'bg-rose-500/10 text-rose-400 border border-rose-500/20',
+      activeIconBg: 'bg-rose-500/20 text-rose-300 border border-rose-400/40',
+      bulletColor: 'bg-rose-400',
       painPoints: [
         'Fraud & Leakage',
         'Cost Optimization Pressure',
@@ -216,12 +212,12 @@ export const Slide2Reality: React.FC = () => {
               key={item.id}
               variants={itemVariants}
               animate={{
-                scale: isSelected ? 1.03 : isDull ? 0.96 : 1,
-                opacity: isDull ? 0.28 : 1,
+                scale: isSelected ? 1.02 : isDull ? 0.98 : 1,
+                opacity: isDull ? 0.35 : 1,
               }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               className={`cursor-pointer select-none transition-all duration-300 ${
-                isDull ? 'filter grayscale-[50%] brightness-75 hover:opacity-60 hover:grayscale-0' : ''
+                isDull ? 'hover:opacity-70' : ''
               } ${isSelected ? 'z-20' : 'z-10'}`}
               onClick={() => handleTileClick(item.id)}
               role="button"
@@ -239,22 +235,10 @@ export const Slide2Reality: React.FC = () => {
                   isSelected
                     ? `${item.activeBorder} bg-gradient-to-b ${item.color} backdrop-blur-2xl`
                     : isDull
-                    ? 'border-white/10 bg-white/[0.02]'
-                    : `border ${item.borderColor} bg-gradient-to-b ${item.color} ${item.glowColor} hover:-translate-y-1`
+                    ? 'border-white/5 bg-white/[0.02]'
+                    : `border ${item.borderColor} bg-gradient-to-b ${item.color} hover:-translate-y-1`
                 }`}
               >
-                {/* Active Focus Pill Indicator */}
-                {isSelected && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="absolute top-3.5 right-3.5 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 border border-white/30 backdrop-blur-md shadow-sm"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-[10px] uppercase tracking-wider font-extrabold text-white">Active</span>
-                  </motion.div>
-                )}
-
                 {/* Top Icon */}
                 <div className="mb-4">
                   <div className={`w-fit p-3 rounded-2xl transition-all duration-300 ${isSelected ? item.activeIconBg : item.iconBg}`}>
@@ -276,11 +260,7 @@ export const Slide2Reality: React.FC = () => {
                         isSelected ? 'text-white font-semibold' : 'text-slate-200/90'
                       }`}
                     >
-                      <span
-                        className={`w-1.5 h-1.5 rounded-full ${item.bulletColor} mt-1.5 shrink-0 transition-transform duration-300 ${
-                          isSelected ? 'scale-125 ring-2 ring-white/40' : ''
-                        }`}
-                      />
+                      <span className={`w-1.5 h-1.5 rounded-full ${item.bulletColor} mt-1.5 shrink-0`} />
                       <span>{point}</span>
                     </li>
                   ))}
