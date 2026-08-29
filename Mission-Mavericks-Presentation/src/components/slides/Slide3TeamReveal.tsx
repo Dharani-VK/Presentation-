@@ -84,6 +84,16 @@ export const Slide3TeamReveal: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handlePrev, handleNext]);
 
+  // Preload all team images on mount for instant smooth transitions
+  useEffect(() => {
+    TEAM_MEMBERS.forEach((m) => {
+      if (m.image) {
+        const img = new Image();
+        img.src = m.image;
+      }
+    });
+  }, []);
+
   const member = TEAM_MEMBERS[currentIndex];
   const isPremium = member.isPremium;
 
@@ -170,8 +180,11 @@ export const Slide3TeamReveal: React.FC = () => {
                           <FallbackAvatar name={member.name} />
                         ) : (
                           <img
+                            key={member.id}
                             src={member.image}
                             alt={member.name}
+                            loading="eager"
+                            decoding="async"
                             className="w-full h-full object-cover object-top"
                             onError={() => setImgError((p) => ({ ...p, [member.id]: true }))}
                           />

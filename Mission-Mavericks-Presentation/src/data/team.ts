@@ -1,5 +1,15 @@
-// Mission Mavericks Team Data
-// Order is mandatory — follows the exact approved team table structure.
+import chandraSekharImg from '../Assets/team/chandra-sekhar-siddabattula.jpg';
+import thiyagarajanImg from '../Assets/team/thiyagarajan-mani.jpg';
+import jijendraImg from '../Assets/team/jijendra-manoharan.jpg';
+import ishaImg from '../Assets/team/isha-subash.jpg';
+import dharaniImg from '../Assets/team/dharani-veerapathiran.jpg';
+import gowdhamImg from '../Assets/team/gowdham-gokul.jpg';
+import dharunKrishnaImg from '../Assets/team/dharun-krishna-manoharan.jpg';
+import monishaImg from '../Assets/team/monisha-murugavel.jpg';
+import desinghImg from '../Assets/team/desingh-kannan.jpg';
+import varunSaiImg from '../Assets/team/varun-sai-addepalli.jpg';
+import pavithraImg from '../Assets/team/pavithra-aruchamy.jpg';
+import missionMavericksLogoImg from '../Assets/mission-mavericks-logo.png';
 
 export interface TeamMember {
   id: string;
@@ -17,7 +27,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Chandra Sekhar Siddabattula',
     role: 'Coach',
     focus: ['Program Strategy', 'Executive Guidance'],
-    image: '/images/Chandra Sekhar Siddabattula.jpg',
+    image: chandraSekharImg,
     isPremium: true,
   },
   {
@@ -25,7 +35,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Thiyagarajan Mani',
     role: 'Mentor',
     focus: ['Domain Expertise', 'Solution Architecture'],
-    image: '/images/Thiyagarajan Mani.jpg',
+    image: thiyagarajanImg,
     isPremium: true,
   },
   {
@@ -33,67 +43,66 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Jijendra Manoharan',
     role: 'Business Analyst',
     focus: ['Project Discovery', 'Innovation', 'Solution Design'],
-    image: '/images/Jijendra Manoharan.jpg',
+    image: jijendraImg,
   },
   {
     id: 'isha-subash',
     name: 'Isha Subash',
     role: 'Business Analyst',
     focus: ['Project Discovery', 'Innovation', 'Solution Design'],
-    image: '/images/Isha Subash.jpg',
+    image: ishaImg,
   },
   {
     id: 'dharani-veerapathiran',
     name: 'Dharani Veerapathiran',
     role: 'Business Analyst',
     focus: ['Project Discovery', 'Innovation', 'Solution Design'],
-    image: '/images/Dharani Veerapathiran.jpg',
+    image: dharaniImg,
   },
   {
     id: 'gowdham-gokul',
     name: 'Gowdham Gokul',
     role: 'Front End Developer',
     focus: ['QA', 'Solution Design'],
-    image: '/images/Gowdham Gokul.jpg',
+    image: gowdhamImg,
   },
   {
     id: 'dharun-krishna-manoharan',
     name: 'Dharun Krishna Manoharan',
     role: 'Front End & Back End Developer',
     focus: ['QA', 'Solution Design'],
-    image: '/images/Dharun Krishna Manoharan.jpg',
+    image: dharunKrishnaImg,
   },
   {
     id: 'monisha-murugavel',
     name: 'Monisha Murugavel',
     role: 'Front End Developer',
     focus: ['QA', 'Solution Design'],
-    image: '/images/Monisha Murugavel.jpg',
+    image: monishaImg,
   },
   {
     id: 'desingh-kannan',
     name: 'Desingh Kannan',
     role: 'QA',
     focus: ['Website Front End Developer'],
-    image: '/images/Desingh Kannan.jpg',
+    image: desinghImg,
   },
   {
     id: 'varun-sai-addepalli',
     name: 'Varun Sai Addepalli',
     role: 'QA',
     focus: ['Website Front End Developer'],
-    image: '/images/Varun Sai Addepalli.jpg',
+    image: varunSaiImg,
   },
   {
     id: 'pavithra-aruchamy',
     name: 'Pavithra Aruchamy',
     role: 'Scrum Master',
     focus: ['QA', 'Innovation', 'PMO'],
-    image: '/images/Pavithra Aruchamy.jpg',
+    image: pavithraImg,
   },
 ];
 
-import missionMavericksLogoImg from '../Assets/mission-mavericks-logo.png';
-
 export const MISSION_MAVERICKS_LOGO = missionMavericksLogoImg;
+
 
