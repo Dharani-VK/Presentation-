@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { usePresentation } from '../../context/PresentationContext';
 import firstPageVideo from '../../Assets/first page .mp4';
 import revealFirstPageVideo from '../../Assets/Reveal first page.mp4';
-import { ChevronRight, ChevronLeft, Play, Sparkles } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Slide1Landing: React.FC = () => {
@@ -81,46 +81,35 @@ export const Slide1Landing: React.FC = () => {
                 </div>
               </motion.div>
 
-              {/* ── Right Half: Hero Content & Short-Size LET'S START Button ───── */}
+              {/* ── Right Half: ONLY Glowing LET'S BEGIN Button & Icon ───── */}
               <motion.div
-                initial={{ opacity: 0, x: 25 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="w-full lg:w-1/2 flex flex-col items-start text-left gap-4 sm:gap-5"
+                className="w-full lg:w-1/2 flex items-center justify-center py-4"
               >
-                {/* Badge */}
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 backdrop-blur-md">
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                  <span className="text-[11px] sm:text-xs font-semibold tracking-wider text-cyan-300 uppercase">
-                    Mission Mavericks
-                  </span>
-                </div>
+                <motion.button
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.94 }}
+                  onClick={handleStartReveal}
+                  className="flex flex-col items-center gap-3 cursor-pointer group focus:outline-none"
+                  title="Let's Begin"
+                  aria-label="Let's Begin"
+                >
+                  {/* Glowing Neon Disc with Play Triangle */}
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-[#030914] border-2 border-cyan-400 shadow-[0_0_35px_rgba(6,182,212,0.6)] flex items-center justify-center transition-all duration-300 group-hover:border-cyan-300 group-hover:shadow-[0_0_60px_rgba(6,182,212,0.9)]">
+                    <span className="absolute -inset-2 rounded-full border border-cyan-400/25 animate-pulse pointer-events-none" />
+                    <Play className="w-9 h-9 sm:w-11 sm:h-11 fill-cyan-400 text-cyan-400 translate-x-0.5 drop-shadow-[0_0_15px_rgba(34,211,238,0.9)] transition-transform duration-300 group-hover:scale-110" />
+                  </div>
 
-                {/* Main Headline */}
-                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
-                  ClaimShield+ <br />
-                  <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
-                    Motor OD Claim Platform
-                  </span>
-                </h1>
-
-                {/* Subtitle */}
-                <p className="text-xs sm:text-sm md:text-base text-slate-300/85 leading-relaxed max-w-md">
-                  Trust Every Claim. Transform Every Outcome. Connected today, protected tomorrow.
-                </p>
-
-                {/* Short Size "LET'S START" Button */}
-                <div className="pt-2">
-                  <motion.button
-                    whileHover={{ scale: 1.06, x: 2 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleStartReveal}
-                    className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 hover:from-cyan-300 hover:to-emerald-300 text-slate-950 font-extrabold font-display text-xs sm:text-sm tracking-wider uppercase shadow-[0_0_25px_rgba(34,211,238,0.45)] transition-all flex items-center gap-2.5 cursor-pointer"
-                  >
-                    <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-slate-950" />
-                    <span>LET'S START</span>
-                  </motion.button>
-                </div>
+                  {/* LET'S BEGIN Label & Underline */}
+                  <div className="text-center mt-1">
+                    <span className="text-xs sm:text-sm md:text-base font-extrabold font-display tracking-[0.3em] text-cyan-400 uppercase drop-shadow-[0_0_10px_rgba(34,211,238,0.6)] group-hover:text-cyan-300 transition-colors">
+                      LET'S BEGIN
+                    </span>
+                    <div className="w-12 h-[2px] bg-cyan-400 rounded-full mt-1.5 mx-auto shadow-[0_0_8px_rgba(34,211,238,0.9)] group-hover:w-16 transition-all duration-300" />
+                  </div>
+                </motion.button>
               </motion.div>
             </div>
 
