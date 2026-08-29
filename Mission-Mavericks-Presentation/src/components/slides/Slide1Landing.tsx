@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { usePresentation } from '../../context/PresentationContext';
-import firstPageVideo from '../../Assets/first page .mp4';
+import firstPageVideo from '../../Assets/first page.mp4';
 import revealFirstPageVideo from '../../Assets/Reveal first page.mp4';
 import { ChevronRight, ChevronLeft, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
