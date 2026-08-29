@@ -68,27 +68,27 @@ export const Slide5ProductReveal: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[580px] flex flex-col items-center justify-center py-6 px-4 overflow-hidden select-none">
-      {/* ── Left Region Background Video (Cover of left side, no outer box, plays only once) ───── */}
-      <div className="absolute left-0 top-0 bottom-0 w-full sm:w-1/2 md:w-5/12 lg:w-4/12 xl:w-1/3 overflow-hidden pointer-events-none z-0">
+    <div className="relative w-full min-h-[600px] flex flex-col items-center justify-center py-6 px-4 overflow-hidden select-none">
+      {/* ── Slide 5 Background Layer (Exact dark tone matching video background) ───── */}
+      <div className="fixed inset-0 bg-[#030712] z-0 pointer-events-none" />
+
+      {/* ── Left Region Full Uncropped Video Background ───── */}
+      <div className="absolute left-0 sm:left-2 lg:left-6 top-1/2 -translate-y-1/2 w-[48vw] max-w-[560px] h-[82vh] max-h-[640px] pointer-events-none z-0 flex items-center justify-start overflow-visible">
         <video
           ref={videoRef}
           src={roboxVideo}
           autoPlay
           muted={isMuted}
           playsInline
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-contain object-left"
         />
-        {/* Soft edge blend overlays into dark canvas */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#020713]/30 to-[#020713]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020713]/50 via-transparent to-[#020713]/80" />
       </div>
 
       {/* ── Subtle Controls (Mute / Replay in bottom-right) ───── */}
       <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
         <button
           onClick={toggleMute}
-          className="p-2 rounded-full bg-black/40 hover:bg-black/70 text-white/70 hover:text-white border border-white/10 backdrop-blur-md transition-all cursor-pointer"
+          className="p-2 rounded-full bg-black/50 hover:bg-black/80 text-white/70 hover:text-white border border-white/10 backdrop-blur-md transition-all cursor-pointer"
           title={isMuted ? 'Unmute' : 'Mute'}
           aria-label={isMuted ? 'Unmute video' : 'Mute video'}
         >
@@ -98,7 +98,7 @@ export const Slide5ProductReveal: React.FC = () => {
         {isEnded && (
           <button
             onClick={handleReplay}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 hover:bg-black/70 text-brand-green border border-brand-green/30 backdrop-blur-md transition-all cursor-pointer text-xs font-bold font-display"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/80 text-brand-green border border-brand-green/30 backdrop-blur-md transition-all cursor-pointer text-xs font-bold font-display"
             title="Replay Video"
             aria-label="Replay video"
           >
@@ -165,6 +165,7 @@ export const Slide5ProductReveal: React.FC = () => {
     </div>
   );
 };
+
 
 
 
