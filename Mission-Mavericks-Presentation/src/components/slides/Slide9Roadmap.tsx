@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { WindingRoadCanvas } from '../roadmap/WindingRoadCanvas';
 
 export const Slide9Roadmap: React.FC = () => {
-  const [activeMilestoneId, setActiveMilestoneId] = useState<'NOW' | 'NEXT' | 'FUTURE' | null>('NOW');
+  const [activeMilestoneId, setActiveMilestoneId] = useState<'NOW' | 'NEXT' | 'FUTURE' | null>(null);
 
   return (
     <div className="relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center min-h-[580px] sm:min-h-[620px] py-1 select-none">
@@ -31,7 +31,7 @@ export const Slide9Roadmap: React.FC = () => {
       <div className="relative z-10 w-full my-1 flex-1 flex flex-col justify-center">
         <WindingRoadCanvas
           activeMilestoneId={activeMilestoneId}
-          onSelectMilestone={(id) => setActiveMilestoneId(id)}
+          onSelectMilestone={(id) => setActiveMilestoneId((prev) => (prev === id ? null : id))}
           onCloseCard={() => setActiveMilestoneId(null)}
         />
       </div>
