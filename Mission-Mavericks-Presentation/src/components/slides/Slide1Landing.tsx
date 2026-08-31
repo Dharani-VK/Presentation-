@@ -3,7 +3,7 @@ import { usePresentation } from '../../context/PresentationContext';
 import firstPageVideo from '../../Assets/first page.mp4';
 import revealFirstPageVideo from '../../Assets/Reveal first page.mp4';
 import bgImage from '../../Assets/BG.png';
-import { ChevronRight, ChevronLeft, Menu } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Slide1Landing: React.FC = () => {
@@ -84,7 +84,7 @@ export const Slide1Landing: React.FC = () => {
                 {/* Subtle Hover Action Overlay */}
                 <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors duration-300 flex items-center justify-center pointer-events-none">
                   <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-cyan-400/20 border border-cyan-300/60 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center shadow-[0_0_30px_rgba(34,211,238,0.7)]">
-                    <Menu className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={2.5} />
+                    <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 text-white transition-transform group-hover:translate-x-0.5" strokeWidth={2.5} />
                   </div>
                 </div>
               </motion.div>
@@ -104,10 +104,10 @@ export const Slide1Landing: React.FC = () => {
                   title="Let's Begin"
                   aria-label="Let's Begin"
                 >
-                  {/* Glowing Neon Disc with Menu / Action Icon */}
+                  {/* Glowing Neon Disc with Arrow Icon */}
                   <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-[#030914] border-2 border-cyan-400 shadow-[0_0_35px_rgba(6,182,212,0.6)] flex items-center justify-center transition-all duration-300 group-hover:border-cyan-300 group-hover:shadow-[0_0_60px_rgba(6,182,212,0.9)]">
                     <span className="absolute -inset-2 rounded-full border border-cyan-400/25 animate-pulse pointer-events-none" />
-                    <Menu className="w-9 h-9 sm:w-11 sm:h-11 text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.9)] transition-transform duration-300 group-hover:scale-110" strokeWidth={2.4} />
+                    <ArrowRight className="w-10 h-10 sm:w-12 sm:h-12 text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.9)] transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110" strokeWidth={2.5} />
                   </div>
 
                   {/* LET'S BEGIN Label & Underline */}
