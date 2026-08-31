@@ -55,22 +55,22 @@ export const FloatingMilestoneCard: React.FC<FloatingMilestoneCardProps> = ({
   // Determine positioning coordinates & arrow orientation based on milestone
   const getPositionStyles = () => {
     if (isNow) {
-      // NOW stone is at left-[14%] bottom-[10%] -> card floats to its right
+      // NOW stone is at left-[14%] bottom-[9%] -> card floats to its right
       return {
-        wrapper: 'left-[3%] sm:left-[27%] md:left-[29%] bottom-[4%] sm:bottom-[7%] w-full max-w-[340px] sm:max-w-[370px]',
-        arrow: 'hidden sm:block absolute -left-2.5 bottom-10 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[10px] border-r-[#06152f]',
+        wrapper: 'left-[3%] sm:left-[29%] md:left-[31%] bottom-[4%] sm:bottom-[7%] w-full max-w-[340px] sm:max-w-[380px]',
+        arrow: 'hidden sm:block absolute -left-2.5 bottom-12 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[10px] border-r-[#06152f]',
       };
     }
     if (isNext) {
-      // NEXT stone is at right-[15%] top-[38%] -> card floats to its left
+      // NEXT stone is at right-[14%] top-[35%] -> card floats to its left
       return {
-        wrapper: 'left-[3%] sm:left-auto sm:right-[27%] md:right-[29%] top-[12%] sm:top-[20%] w-full max-w-[340px] sm:max-w-[370px]',
+        wrapper: 'left-[3%] sm:left-auto sm:right-[28%] md:right-[30%] top-[12%] sm:top-[18%] w-full max-w-[340px] sm:max-w-[380px]',
         arrow: 'hidden sm:block absolute -right-2.5 top-12 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[10px] border-l-[#06152f]',
       };
     }
     // FUTURE stone is at left-[43%] top-[11%] -> card floats to its right/below
     return {
-      wrapper: 'left-[3%] sm:left-[48%] md:left-[51%] top-[8%] sm:top-[11%] w-full max-w-[340px] sm:max-w-[370px]',
+      wrapper: 'left-[3%] sm:left-[52%] md:left-[54%] top-[7%] sm:top-[10%] w-full max-w-[340px] sm:max-w-[380px]',
       arrow: 'hidden sm:block absolute -left-2.5 top-8 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[10px] border-r-[#06152f]',
     };
   };

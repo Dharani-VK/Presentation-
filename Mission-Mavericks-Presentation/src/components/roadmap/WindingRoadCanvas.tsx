@@ -23,7 +23,7 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
     'M 450 600 C 250 500, 390 460, 510 400 C 650 330, 870 310, 810 220 C 765 160, 510 160, 482 120';
 
   return (
-    <div className="relative w-full h-[470px] sm:h-[530px] md:h-[570px] rounded-3xl overflow-hidden bg-[#030914] border border-white/10 shadow-2xl">
+    <div className="relative w-full h-[490px] sm:h-[545px] md:h-[590px] rounded-3xl overflow-hidden bg-[#030914] border border-white/10 shadow-2xl">
       {/* Distant Horizon Atmospheric Glow & Mountains */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Sky gradient */}
@@ -212,24 +212,24 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
       {/* THREE TRADITIONAL ROADSIDE MILESTONE STONES */}
 
       {/* 1. NOW MILESTONE STONE (Foreground curve - closest and largest) */}
-      <div className="absolute left-[8%] sm:left-[12%] md:left-[14%] bottom-[8%] sm:bottom-[10%] z-20">
+      <div className="absolute left-[8%] sm:left-[12%] md:left-[14%] bottom-[7%] sm:bottom-[9%] z-20">
         <RoadsideMilestoneStone
           label="NOW"
           number="01"
           stageName="CURRENT"
-          scale={1.05}
+          scale={1.12}
           isActive={activeMilestoneId === 'NOW'}
           onClick={() => onSelectMilestone('NOW')}
         />
       </div>
 
       {/* 2. NEXT MILESTONE STONE (Mid-distance curve - medium scale) */}
-      <div className="absolute right-[10%] sm:right-[13%] md:right-[15%] top-[38%] sm:top-[36%] z-15">
+      <div className="absolute right-[9%] sm:right-[12%] md:right-[14%] top-[37%] sm:top-[35%] z-15">
         <RoadsideMilestoneStone
           label="NEXT"
           number="02"
           stageName="UPCOMING"
-          scale={0.80}
+          scale={0.88}
           isActive={activeMilestoneId === 'NEXT'}
           onClick={() => onSelectMilestone('NEXT')}
         />
@@ -241,7 +241,7 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
           label="FUTURE"
           number="03"
           stageName="DESTINATION"
-          scale={0.65}
+          scale={0.72}
           isActive={activeMilestoneId === 'FUTURE'}
           onClick={() => onSelectMilestone('FUTURE')}
         />
