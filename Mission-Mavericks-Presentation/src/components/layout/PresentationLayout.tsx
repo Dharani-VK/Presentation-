@@ -56,7 +56,7 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({ children
       {/* Main Single Slide Stage */}
       <main
         className={`relative z-10 flex-1 w-full h-full flex items-center justify-center px-4 sm:px-8 ${
-          currentSlide === 0 || currentSlide === 1
+          currentSlide === 0 || currentSlide === 1 || currentSlide === 9
             ? 'overflow-hidden pt-16 sm:pt-20 pb-3'
             : 'overflow-y-auto pt-16 sm:pt-20 pb-20 sm:pb-24'
         }`}

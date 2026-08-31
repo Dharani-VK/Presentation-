@@ -18,9 +18,10 @@ export const SLIDES_METADATA: SlideMeta[] = [
   { index: 6, id: 'automation', title: 'AI Automation', shortName: 'AI Automation', kicker: 'Automated STP Engine' },
   { index: 7, id: 'impact', title: 'Business Impact & PMO', shortName: 'Business Impact & PMO', kicker: 'Business Impact & PMO' },
   { index: 8, id: 'roadmap', title: 'Roadmap', shortName: 'Roadmap', kicker: 'Strategic Horizon' },
+  { index: 9, id: 'qa', title: 'Q&A', shortName: 'Q&A', kicker: 'Questions & Answers' },
 ];
 
-export const TOTAL_SLIDES = SLIDES_METADATA.length; // Exactly 9
+export const TOTAL_SLIDES = SLIDES_METADATA.length; // Exactly 10
 
 interface PresentationContextType {
   currentSlide: number;

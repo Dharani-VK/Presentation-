@@ -10,6 +10,7 @@ import { Slide6Ecosystem } from './components/slides/Slide6Ecosystem';
 import { Slide7Launch } from './components/slides/Slide7Launch';
 import { Slide8BusinessImpact } from './components/slides/Slide8BusinessImpact';
 import { Slide9Roadmap } from './components/slides/Slide9Roadmap';
+import { Slide10QA } from './components/slides/Slide10QA';
 
 const SlideRenderer: React.FC = () => {
   const { currentSlide } = usePresentation();
@@ -33,6 +34,8 @@ const SlideRenderer: React.FC = () => {
       return <Slide8BusinessImpact />; // 8 Business Impact & PMO
     case 8:
       return <Slide9Roadmap />; // 9 Roadmap
+    case 9:
+      return <Slide10QA />; // 10 Q&A
     default:
       return <Slide1Landing />;
   }
