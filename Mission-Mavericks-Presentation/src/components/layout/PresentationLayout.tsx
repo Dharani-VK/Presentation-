@@ -61,7 +61,7 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({ children
             : 'overflow-y-auto pt-16 sm:pt-20 pb-20 sm:pb-24'
         }`}
       >
-        <div className="w-full max-w-7xl mx-auto my-auto py-1 sm:py-2 flex flex-col items-center justify-center">
+        <div className="w-full max-w-[1480px] mx-auto my-auto py-1 sm:py-2 flex flex-col items-center justify-center">
           {children}
         </div>
       </main>
