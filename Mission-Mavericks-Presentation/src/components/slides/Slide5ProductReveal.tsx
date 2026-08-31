@@ -1,11 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import claimShieldLogo from '../../Assets/image.png';
 import roboxVideo from '../../Assets/Robox.mp4';
 
+const journeySentences = [
+  'We understood the problem',
+  'We learned the business',
+  'We redesigned the journey',
+];
+
 export const Slide5ProductReveal: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [textRevealed, setTextRevealed] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -18,41 +23,14 @@ export const Slide5ProductReveal: React.FC = () => {
         video.muted = true;
         video.play().catch(() => {});
       });
-
-    // Reveal text after 7 seconds of video playback
-    const handleTimeUpdate = () => {
-      if (video.currentTime >= 7) {
-        setTextRevealed(true);
-      }
-    };
-
-    // When video completes fully, stop and keep paused on final frame (plays only once)
-    const handleEnded = () => {
-      setTextRevealed(true);
-      video.pause();
-    };
-
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    video.addEventListener('ended', handleEnded);
-
-    // Guaranteed fallback timer for 7 seconds reveal
-    const timer = setTimeout(() => {
-      setTextRevealed(true);
-    }, 7000);
-
-    return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate);
-      video.removeEventListener('ended', handleEnded);
-      clearTimeout(timer);
-    };
   }, []);
 
   return (
     <div className="relative w-full min-h-[580px] flex flex-col items-center justify-center py-4 px-4 select-none">
-      {/* ── Slide 5 Background Layer (Exact dark tone matching video background) ───── */}
+      {/* ── Slide 5 Background Layer ───── */}
       <div className="fixed inset-0 bg-gradient-to-br from-[#060c18] via-[#050b16] to-[#040812] z-0 pointer-events-none" />
 
-      {/* ── Left Corner Video Background (Flush to screen edge with soft right edge blend) ───── */}
+      {/* ── Left Corner Video Background ───── */}
       <div className="fixed left-0 inset-y-0 w-[45vw] max-w-[540px] h-full pointer-events-none z-0 flex items-center justify-start overflow-hidden">
         <video
           ref={videoRef}
@@ -68,65 +46,77 @@ export const Slide5ProductReveal: React.FC = () => {
         />
       </div>
 
-      {/* ── Centered Page Contents (Shifted significantly up, revealed strictly after 6s) ───── */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center -mt-16 sm:-mt-24 lg:-mt-28">
-        {/* 1. SINGLE LINE HEADLINE (Centered, revealed after 6s) */}
+      {/* ── Centered Page Contents (No Box Wrapper) ───── */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center -mt-8 sm:-mt-12 lg:-mt-16">
+        {/* Step 1: 3 STATEMENTS - Revealed at 7s (No box, no dot, clean spacing between sentences) */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={textRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          style={{ visibility: textRevealed ? 'visible' : 'hidden' }}
-          className="w-full text-center mb-5 sm:mb-6"
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 7.0, duration: 0.8, ease: 'easeOut' }}
+          className="w-full text-center mb-8 sm:mb-10"
         >
-          <h2 className="w-full text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-extrabold font-display tracking-tight whitespace-nowrap flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-10 text-white">
-            <span>We understood the problem</span>
-            <span>We learned the business</span>
-            <span>We redesigned the journey</span>
-          </h2>
+          <div className="w-full flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14 text-slate-200/90 text-sm sm:text-base md:text-lg lg:text-xl font-display font-medium tracking-wide">
+            {journeySentences.map((text, idx) => (
+              <span key={idx} className="transition-colors hover:text-white">
+                {text}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
-        {/* 2. PRODUCT BRAND REVEAL (Centered, revealed after 6s) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.88, y: 25 }}
-          animate={
-            textRevealed
-              ? { opacity: 1, scale: 1, y: 0 }
-              : { opacity: 0, scale: 0.88, y: 25 }
-          }
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          style={{ visibility: textRevealed ? 'visible' : 'hidden' }}
-          className="flex flex-col items-center text-center"
-        >
-          {/* Shield Emblem Image */}
-          <div className="relative mb-3 sm:mb-4 flex items-center justify-center">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center">
+        {/* Seamless Product Branding (Box Removed) */}
+        <div className="flex flex-col items-center text-center">
+          {/* Step 3: Logo (Shield Emblem) revealed at 9.0s (1.0s after ClaimShield+ name) - Slightly bigger */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 9.0, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="relative mb-3 sm:mb-4 flex items-center justify-center"
+          >
+            <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 flex items-center justify-center">
               <img
                 src={claimShieldLogo}
                 alt="ClaimShield+ Logo"
-                className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
+                className="w-full h-full object-contain filter drop-shadow-[0_12px_32px_rgba(32,223,137,0.35)]"
               />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Product Brand Title: ClaimShield+ */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black font-display tracking-tight text-white leading-none">
+          {/* Step 2: ClaimShield+ Brand Name revealed at 8.0s (1.0s after Step 1) - Slightly smaller, professional sizing */}
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 8.0, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-display tracking-tight text-white leading-tight"
+          >
             Claim<span className="bg-gradient-to-r from-brand-green via-brand-cyan to-brand-lime bg-clip-text text-transparent">Shield+</span>
-          </h1>
+          </motion.h1>
 
-          {/* Subtitle */}
-          <p className="text-sm sm:text-lg md:text-xl font-bold font-display text-white/90 mt-2.5 sm:mt-3 tracking-tight">
+          {/* Step 4: Motor OD Claim Management Platform revealed at 10.0s (1.0s after Logo) */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 10.0, duration: 0.65, ease: 'easeOut' }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl font-bold font-display text-white/90 mt-2.5 sm:mt-3 tracking-tight"
+          >
             Motor OD Claim Management Platform
-          </p>
+          </motion.p>
 
-          {/* Tagline Placed Last */}
-          <p className="text-xs sm:text-sm font-semibold text-[#5ce1e6] mt-2 tracking-wide">
+          {/* Step 5: Tagline revealed at 11.0s (1.0s after Subtitle) */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 11.0, duration: 0.65, ease: 'easeOut' }}
+            className="text-xs sm:text-sm md:text-base font-semibold text-[#5ce1e6] mt-2 tracking-wide"
+          >
             Trust Every Claim. Transform Every Outcome.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
       </div>
     </div>
   );
 };
+
 
 
 

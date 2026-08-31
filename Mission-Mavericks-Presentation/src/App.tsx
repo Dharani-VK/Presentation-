@@ -8,7 +8,7 @@ import { Slide4Timeline } from './components/slides/Slide4Timeline';
 import { Slide5ProductReveal } from './components/slides/Slide5ProductReveal';
 import { Slide6Ecosystem } from './components/slides/Slide6Ecosystem';
 import { Slide7Launch } from './components/slides/Slide7Launch';
-import { Slide8EvidenceHub } from './components/slides/Slide8EvidenceHub';
+import { Slide8BusinessImpact } from './components/slides/Slide8BusinessImpact';
 import { Slide9Roadmap } from './components/slides/Slide9Roadmap';
 
 const SlideRenderer: React.FC = () => {
@@ -16,7 +16,7 @@ const SlideRenderer: React.FC = () => {
 
   switch (currentSlide) {
     case 0:
-      return <Slide1Landing />; // 1 Title
+      return <Slide1Landing />; // 1 Home
     case 1:
       return <Slide3TeamReveal />; // 2 Team Members
     case 2:
@@ -30,7 +30,7 @@ const SlideRenderer: React.FC = () => {
     case 6:
       return <Slide7Launch />; // 7 AI Automation
     case 7:
-      return <Slide8EvidenceHub />; // 8 Business Impact, PMO Disciplines
+      return <Slide8BusinessImpact />; // 8 Business Impact & PMO
     case 8:
       return <Slide9Roadmap />; // 9 Roadmap
     default:

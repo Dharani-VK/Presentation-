@@ -9,7 +9,7 @@ export interface SlideMeta {
 }
 
 export const SLIDES_METADATA: SlideMeta[] = [
-  { index: 0, id: 'title', title: 'Title', shortName: 'Title', kicker: 'Executive Presentation' },
+  { index: 0, id: 'home', title: 'Home', shortName: 'Home', kicker: 'Executive Presentation' },
   { index: 1, id: 'team', title: 'Team Members', shortName: 'Team Members', kicker: 'The Team' },
   { index: 2, id: 'journey', title: 'Journey', shortName: 'Journey', kicker: 'Milestones & Evolution' },
   { index: 3, id: 'problem', title: 'The Problem', shortName: 'The Problem', kicker: 'Frictions & Challenges' },
@@ -17,7 +17,7 @@ export const SLIDES_METADATA: SlideMeta[] = [
   { index: 5, id: 'ecosystem', title: 'Ecosystem', shortName: 'Ecosystem', kicker: 'ClaimShield+ Ecosystem' },
   { index: 6, id: 'automation', title: 'AI Automation', shortName: 'AI Automation', kicker: 'Automated STP Engine' },
   { index: 7, id: 'impact', title: 'Business Impact, PMO', shortName: 'Business Impact, PMO', kicker: 'Business Impact & PMO' },
-  { index: 8, id: 'roadmap', title: 'Roadmap', shortName: 'Roadmap', kicker: 'Strategic Horizon' },
+  { index: 8, id: 'roadmap', title: 'Roadmap', shortName: 'Roadmap', kicker: 'Roadmap' },
 ];
 
 export const TOTAL_SLIDES = SLIDES_METADATA.length; // Exactly 9
