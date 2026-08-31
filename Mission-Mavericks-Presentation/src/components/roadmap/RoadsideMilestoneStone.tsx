@@ -53,12 +53,35 @@ export const RoadsideMilestoneStone: React.FC<RoadsideMilestoneStoneProps> = ({
   return (
     <motion.div
       onClick={onClick}
-      whileHover={{ y: -5, scale: scale * 1.05 }}
-      whileTap={{ scale: scale * 0.98 }}
-      className="relative flex flex-col items-center cursor-pointer select-none group"
+      role="button"
+      tabIndex={0}
+      aria-label={`Milestone ${label} ${stageName}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      initial={false}
+      animate={{
+        y: isActive ? -8 : 0,
+        scale: isActive ? scale * 1.06 : scale,
+      }}
+      whileHover={{
+        y: isActive ? -10 : -5,
+        scale: isActive ? scale * 1.09 : scale * 1.04,
+      }}
+      whileTap={{
+        scale: scale * 0.96,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 350,
+        damping: 24,
+        mass: 0.8,
+      }}
+      className="relative flex flex-col items-center cursor-pointer select-none group p-2 focus:outline-none"
       style={{
-        transform: isActive ? `translateY(-6px) scale(${scale * 1.06})` : `translateY(0) scale(${scale})`,
-        transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
         transformOrigin: 'bottom center',
       }}
     >

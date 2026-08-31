@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { RoadsideMilestoneStone } from './RoadsideMilestoneStone';
 import { FloatingMilestoneCard } from './FloatingMilestoneCard';
 import { ROADMAP_MILESTONES } from '../../data/roadmap';
@@ -91,7 +91,7 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
           <linearGradient id="headlightWindingBeam" x1="0" y1="1" x2="0" y2="0">
             <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
             <stop offset="60%" stopColor="#00d9ff" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#00d9ff" stopOpacity="0" />
+            <stop offset="100%" stopColor="#00d9ff" stopOpacity="0.2" />
           </linearGradient>
         </defs>
 
@@ -229,23 +229,44 @@ export const WindingRoadCanvas: React.FC<WindingRoadCanvasProps> = ({
           label="NEXT"
           number="02"
           stageName="UPCOMING"
-          scale={0.75}
+          scale={0.80}
           isActive={activeMilestoneId === 'NEXT'}
           onClick={() => onSelectMilestone('NEXT')}
         />
       </div>
 
-      {/* 3. FUTURE MILESTONE STONE (Distant curve near horizon - smallest scale) */}
+      {/* 3. FUTURE MILESTONE STONE (Distant curve near horizon) */}
       <div className="absolute left-[38%] sm:left-[41%] md:left-[43%] top-[12%] sm:top-[11%] z-10">
         <RoadsideMilestoneStone
           label="FUTURE"
           number="03"
           stageName="DESTINATION"
-          scale={0.52}
+          scale={0.65}
           isActive={activeMilestoneId === 'FUTURE'}
           onClick={() => onSelectMilestone('FUTURE')}
         />
       </div>
+
+      {/* Subtle Interactive Instruction Pill when no milestone is open */}
+      <AnimatePresence>
+        {!activeMilestoneId && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.3 }}
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+          >
+            <div className="flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#06152f]/90 border border-white/15 text-slate-200 text-xs font-medium backdrop-blur-md shadow-2xl">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan" />
+              </span>
+              <span>Click any milestone stone (NOW, NEXT, FUTURE) to explore deliverables</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* FLOATING INFORMATION CARD OVERLAY (Positioned beside the active milestone stone) */}
       <AnimatePresence mode="wait">
