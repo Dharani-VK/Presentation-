@@ -13,17 +13,17 @@ export const Slide10QA: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-full min-h-[580px] sm:min-h-[640px] flex items-center justify-center select-none overflow-hidden py-4 sm:py-8">
-      {/* ── Background Image Layer (BG.png) ── */}
+    <div className="relative w-full flex flex-col items-center justify-center select-none -mt-4 sm:-mt-8 md:-mt-10">
+      {/* ── Background Image Layer (BG.png) with Increased Transparency ── */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-40 z-0 pointer-events-none"
+        className="fixed inset-0 w-screen h-screen bg-cover bg-center bg-no-repeat opacity-20 z-0 pointer-events-none"
         style={{ backgroundImage: `url("${bgImage}")` }}
       />
-      <div className="absolute inset-0 bg-[#02050e]/30 backdrop-blur-[1px] z-0 pointer-events-none" />
+      <div className="fixed inset-0 bg-[#02050e]/20 backdrop-blur-[1px] z-0 pointer-events-none" />
 
       {/* Background Ambient Glows */}
-      <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-cyan-500/10 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="fixed -top-20 -left-20 w-[500px] h-[500px] bg-cyan-500/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="fixed -bottom-20 -right-20 w-[500px] h-[500px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 px-4 sm:px-8">
         {/* ── Left Side: Final.mp4 Video Card ───── */}

@@ -41,10 +41,10 @@ export const Slide1Landing: React.FC = () => {
     <div className="fixed inset-0 w-screen h-screen z-20 flex items-center justify-center bg-[#02050e] overflow-hidden select-none">
       {/* ── Background Image Layer (BG.png) ── */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-40 z-0 pointer-events-none"
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-20 z-0 pointer-events-none"
         style={{ backgroundImage: `url("${bgImage}")` }}
       />
-      <div className="absolute inset-0 bg-[#02050e]/30 backdrop-blur-[1px] z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#02050e]/20 backdrop-blur-[1px] z-0 pointer-events-none" />
 
       <AnimatePresence mode="wait">
         {stage === 'intro' ? (
