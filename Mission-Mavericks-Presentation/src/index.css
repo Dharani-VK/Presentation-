@@ -172,52 +172,35 @@ body {
 }
 
 /* ================================
-   CARD PALETTES & GLOWS
+   BLUE CARD
 ================================ */
 
-.card-green {
-  border-color: rgba(54, 229, 176, 0.3);
-  box-shadow: 0 8px 32px rgba(54, 229, 176, 0.08), inset 0 1px 0 rgba(54, 229, 176, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card-green:hover {
-  border-color: rgba(54, 229, 176, 0.6);
-  box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(54, 229, 176, 0.25),
-    inset 0 1px 0 rgba(54, 229, 176, 0.3);
-  transform: translateY(-3px);
-}
-
 .card-blue {
-  border-color: rgba(0, 217, 255, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 217, 255, 0.08), inset 0 1px 0 rgba(0, 217, 255, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-color: rgba(0, 217, 255, 0.2);
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.05);
 }
 
 .card-blue:hover {
-  border-color: rgba(0, 217, 255, 0.6);
+  border-color: rgba(0, 217, 255, 0.4);
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(0, 217, 255, 0.25),
-    inset 0 1px 0 rgba(0, 217, 255, 0.3);
-  transform: translateY(-3px);
+    0 8px 20px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(0, 217, 255, 0.15);
 }
 
+/* ================================
+   PURPLE CARD
+================================ */
+
 .card-purple {
-  border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08), inset 0 1px 0 rgba(139, 92, 246, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-color: rgba(23, 103, 255, 0.2);
+  box-shadow: 0 0 12px rgba(23, 103, 255, 0.05);
 }
 
 .card-purple:hover {
-  border-color: rgba(139, 92, 246, 0.6);
+  border-color: rgba(23, 103, 255, 0.4);
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(139, 92, 246, 0.25),
-    inset 0 1px 0 rgba(139, 92, 246, 0.3);
-  transform: translateY(-3px);
+    0 8px 20px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(23, 103, 255, 0.15);
 }
 
 /* ================================
