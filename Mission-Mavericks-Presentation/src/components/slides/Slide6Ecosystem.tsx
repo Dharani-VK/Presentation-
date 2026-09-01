@@ -1,13 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, Wrench, Network, Sparkles, ExternalLink, Clock, Zap } from 'lucide-react';
-import { APPLICATION_LINKS } from '../../data/links';
+import { User, Wrench, Network, Sparkles, Clock, Zap } from 'lucide-react';
 
 export const Slide6Ecosystem: React.FC = () => {
-  const handleLaunch = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   const fastTrackSteps = [
     { label: 'FNOL Intake', sub: 'Voice / Digital' },
     { label: 'Auto Validate', sub: 'Instant policy check' },
@@ -37,7 +32,7 @@ export const Slide6Ecosystem: React.FC = () => {
         </p>
       </motion.div>
 
-      {/* 3 Horizontally Aligned Connected Ecosystem Cards with Launch Portals */}
+      {/* 3 Horizontally Aligned Connected Ecosystem Cards */}
       <div className="w-full max-w-5xl mb-6 sm:mb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch relative z-10">
           {/* ── LEFT CARD: CUSTOMER ── */}
@@ -72,21 +67,10 @@ export const Slide6Ecosystem: React.FC = () => {
               </h4>
 
               {/* Description */}
-              <p className="text-xs text-slate-300 font-medium leading-relaxed mb-4">
+              <p className="text-xs text-slate-300 font-medium leading-relaxed">
                 Voice FNOL, mobile document upload & instant ~30-min spot settlement tracker.
               </p>
             </div>
-
-            {/* Launch Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => handleLaunch(APPLICATION_LINKS.customerPortal)}
-              className="w-full mt-3 py-2.5 px-4 rounded-xl bg-gradient-to-r from-brand-cyan/20 to-brand-blue/20 hover:from-brand-cyan/30 hover:to-brand-blue/30 border border-brand-cyan/40 hover:border-brand-cyan text-white text-xs font-bold font-display flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm group/btn"
-            >
-              <span>Launch Customer App</span>
-              <ExternalLink className="w-3.5 h-3.5 text-brand-cyan group-hover/btn:translate-x-0.5 transition-transform" />
-            </motion.button>
           </motion.div>
 
           {/* ── CENTER CARD: CLAIMS HANDLER (CORE APPLICATION) ── */}
@@ -127,21 +111,10 @@ export const Slide6Ecosystem: React.FC = () => {
               </h4>
 
               {/* Description */}
-              <p className="text-xs text-slate-200 font-medium leading-relaxed mb-4">
+              <p className="text-xs text-slate-200 font-medium leading-relaxed">
                 AI damage estimation, automated triage, fraud signals & settlement approval cockpit.
               </p>
             </div>
-
-            {/* Launch Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => handleLaunch(APPLICATION_LINKS.claimsHandlerPortal)}
-              className="w-full mt-3 py-2.5 px-4 rounded-xl bg-gradient-to-r from-brand-cyan via-[#5ce1e6] to-brand-green text-brand-navy hover:brightness-110 text-xs font-black font-display flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-brand-cyan/25 group/btn"
-            >
-              <span>Launch Claims Cockpit</span>
-              <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-            </motion.button>
           </motion.div>
 
           {/* ── RIGHT CARD: REPAIRER ── */}
@@ -176,21 +149,10 @@ export const Slide6Ecosystem: React.FC = () => {
               </h4>
 
               {/* Description */}
-              <p className="text-xs text-slate-300 font-medium leading-relaxed mb-4">
+              <p className="text-xs text-slate-300 font-medium leading-relaxed">
                 Garage supplementary upload, digital liability sheets & automated invoice sync.
               </p>
             </div>
-
-            {/* Launch Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => handleLaunch(APPLICATION_LINKS.repairerPortal)}
-              className="w-full mt-3 py-2.5 px-4 rounded-xl bg-gradient-to-r from-brand-green/20 to-emerald-900/20 hover:from-brand-green/30 hover:to-emerald-900/30 border border-brand-green/40 hover:border-brand-green text-white text-xs font-bold font-display flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm group/btn"
-            >
-              <span>Launch Repairer Portal</span>
-              <ExternalLink className="w-3.5 h-3.5 text-brand-green group-hover/btn:translate-x-0.5 transition-transform" />
-            </motion.button>
           </motion.div>
         </div>
       </div>
